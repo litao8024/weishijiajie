@@ -60,14 +60,14 @@
 	});
 
 	function loadPage(){
-	<!--<!--//底部选项卡切换跳转-->-->
-    <!--<!--<!--//跳转页面-->-->-->
+	//底部选项卡切换跳转
+    //跳转页面
     var subpages = ['home/view/home.html', 'news/view/news.html', 'mine/view/mine.html'];
     var subpage_style = {
         top: '0px',
         bottom: '51px'
     };
-    <!--<!--<!--//首次启动切滑效果-->-->-->
+    //首次启动切滑效果
     mui.plusReady(function(){
         var self = plus.webview.currentWebview();
         for (var i = 0; i < 3; i++) {
@@ -116,6 +116,11 @@
           project.hide();
       })  
 }          	
+mui.plusReady(function(){
+	var wv=plus.webview.currentWebview();
+	// 关闭侧滑返回功能
+	wv.setStyle({'popGesture':'none'});
+});
     </script>
 </body>
 </html>
