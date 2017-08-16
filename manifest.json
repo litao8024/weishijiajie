@@ -452,12 +452,15 @@
 					"img/write.png",
 					"home/view/ProjectDetails.css",
 					"home/view/myOrderList.html",
-					"home/controller/ProjectDetails.js"
+					"home/controller/ProjectDetails.js",
+					"img/wps.png",
+					"img/cbd.jpg"
 				],
 				"refer": [
 					"home/view/Daily.html",
 					"home/view/DailyList.html",
-					"home/view/ProblemReport.html"
+					"home/view/ProblemReport.html",
+					"home/view/textDocument.html"
 				],
 				"priority": 0
 			},
@@ -502,6 +505,18 @@
 					"css/mui.min.css",
 					"img/login.png",
 					"img/passwordagain.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"home/view/textDocument.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"img/takephoto.png",
+					"img/Layer-1.png",
+					"home/controller/textDocument.js"
 				],
 				"refer": [],
 				"priority": 0

@@ -23,11 +23,11 @@ mui('.mui-table-view').on("tap",".more",function(){
 	mui.openWindow({
 		url:"DailyList.html",
 		id:"DailyList.html",
-		show: {  
-	        autoShow: true, //页面loaded事件发生后自动显示，默认为true  
-	        aniShow: 'slide-in-bottom', //页面显示动画，默认为”slide-in-right“；  
-	        duration: 400 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；  
-	    },
+//		show: {  
+//	        autoShow: true, //页面loaded事件发生后自动显示，默认为true  
+//	        aniShow: 'slide-in-bottom', //页面显示动画，默认为”slide-in-right“；  
+//	        duration: 400 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；  
+//	    },
 	})
 })
 //问题报告
@@ -35,11 +35,13 @@ mui('.Problem').on("tap","img",function(){
 	mui.openWindow({
 		url:"ProblemReport.html",
 		id:"ProblemReport.html",
-		show:{  
-	        autoShow: true, //页面loaded事件发生后自动显示，默认为true  
-	        aniShow: 'slide-in-bottom', //页面显示动画，默认为”slide-in-right“；  
-	        duration: 400 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；  
-	    }
+	})
+})
+//项目文档
+mui(".WpsProblem").on("tap","img",function(){
+	mui.openWindow({
+		url:"textDocument.html",
+		id:"textDocument.html"
 	})
 })
 //定位
