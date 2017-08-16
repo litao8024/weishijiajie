@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+	</head>
+	<body>
+		<div class="mui-page" style="background: #fcfcfc;">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav" onclick="history.go(-1)" style="color:#B7B7B7;"></a>
+				<h1 class="mui-center mui-title">关于我们</h1>
+				<div class="top">
+					<div class="logo">
+						<img src="../../img/logoicon.png"/>
+					</div>
+					<p>New Services - New Future</p>
+					<p>For iphone v1.0.0</p>
+				</div>
+				<div style="width: 100%;position: absolute;left: 0%;">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell Liright" >
+							<a href="#javascript:;">
+								地址
+								<span class="right">北京市海淀区北三环西路辅路甲18号大钟寺中坤广场</span>
+							</a>
+						</li>
+						<li id="phone" class="mui-table-view-cell" style="padding-right: 8px;">
+							<a class="mui-navigate-right">
+								电话
+								<span class="mui-pull-right phone">4008106800</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell Liright">
+							<a href="#javascript:;">
+								邮箱
+								<span class="right">sales@ecs-svs.com</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div style="position: absolute;text-align: center;line-height: 20px;height: 20px;width: 100%;bottom: 12px;">
+				伟仕佳杰服务
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			//打电话
+			window.onload = function(){
+				//拨打电话
+				document.getElementById("phone").addEventListener('tap', function() { 
+					var btnArray = ['拨打', '取消']; 
+					var Phone = "4008106800"; 
+					mui.confirm('是否拨打 ' + Phone + ' ？', '提示', btnArray, function(e) { 
+						if (e.index == 0) { 
+							plus.device.dial(Phone, false); 
+						} 
+					}); 
+				}); 
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html> 
+ 
+    <head> 
+        <meta charset="UTF-8"> 
+        <title></title> 
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.3,user-scalable=no" /> 
+        <link href="../../css/mui.min.css" rel="stylesheet" /> 
+        <style type="text/css">
+        	.mui-table-view-cell:after{
+        		background: white !important;
+        	}
+        	.mui-table-view li{
+        		margin-top: 20px;
+        	}
+        </style>
+    </head> 
+ 
+    <body> 
+    	<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">消息列表</h1>
+		</header>
+        <div class="mui-content"> 
+           <ul class="mui-table-view" onclick="Details()">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right Myatention">
+						<span style="font-weight: 600;">华为服务新政策</span><br /><br />
+						<span>华为服务新政策内容</span>
+					</a>
+				</li>
+			</ul>
+        </div> 
+        <script src="../../js/mui.min.js"></script> 
+        <script type="text/javascript">
+        	function Details(){
+        		mui.openWindow({
+        			url:"Details.html",
+        			id:"Details.html",
+        			show: {  
+				        autoShow: true, //页面loaded事件发生后自动显示，默认为true  
+				        aniShow: 'slide-in-bottom', //页面显示动画，默认为”slide-in-right“；  
+				        duration: 400 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；  
+				    },
+				    extras:{
+				        name:'litao',
+				    }
+        		})
+        	}
+        </script>
+    </body> 
+ 
+</html> 

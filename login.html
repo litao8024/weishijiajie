@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.3,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+	</head>
+	<body>
+		<!--登陆界面-->
+		<div class="mui-content">
+			<div class="Top">
+				<img src="img/bg.png"/>
+			</div>
+			<div class="Toplog">
+				<img src="img/logoicon.png"/>
+			</div>
+			<div class="CompanyName">
+				伟仕佳杰服务工单系统
+			</div>
+			<div class="content">
+				<div class="key mui-input-row">
+					<img src="img/user.png"/>
+					<input id='account' type="number" class="mui-input-clear mui-input mui-content-padded" placeholder="请输入手机号码" onblur="checkMobile()">
+				</div>
+				<div class="key mui-input-row">
+					<img src="img/password.png"/>
+					<input type="password" name="" id="keyss" placeholder="请输入密码" class="mui-input-clear mui-input"/>
+				</div>
+				<div class="login" id="login">
+					<span id="span">登录</span>
+				</div>
+				<div class="bottom">
+					<a href="ChangePassword.html"><span style="float: right;">修改密码</span></a>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			var PhoneWidth = window.screen.width;
+			console.log(PhoneWidth)
+			document.getElementsByClassName("Top")[0].style.height = PhoneWidth * 0.533 + "px";
+			document.getElementsByClassName('Toplog')[0].style.top = PhoneWidth * 0.533 + "px";
+			//		验证手机号码
+			function checkMobile(){ 
+			    var sMobile = document.getElementById('account').value;
+			    if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(sMobile))){ 
+			        mui.toast("请输入正确的手机号码"); 
+			        return false; 
+			    } 
+			}
+		</script>
+	</body>
+</html>

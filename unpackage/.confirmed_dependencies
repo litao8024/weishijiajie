@@ -1,0 +1,292 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"home/view/home.html",
+			"js/index.js",
+			"font/iconfont.css",
+			"font/demo.css",
+			"img/me.png",
+			"img/on-homepage.png",
+			"img/on-news.png",
+			"img/activity@2x.png",
+			"img/homepage.png",
+			"img/on-me.png",
+			"img/news-.png"
+		],
+		"refer": [
+			"mine/view/mine.html",
+			"news/view/news.html",
+			"home/view/home.html",
+			"guide.html"
+		]
+	},
+	"home/view/home.html": {
+		"resources": [
+			"js/mui.js",
+			"css/mui.css",
+			"img/banner2@2x.png",
+			"img/banner1@2x.png",
+			"home/controller/home.js",
+			"font/iconfont.css",
+			"home/view/home.css",
+			"js/Request.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"img/banner2.png",
+			"img/banner1.png",
+			"img/little已完成.png",
+			"img/little待验收.png",
+			"img/little实施中.png",
+			"img/little1.png",
+			"img/little2.png",
+			"img/little3.png",
+			"ProjectDetails.html",
+			"img/实施中.png",
+			"img/littleaa.png",
+			"img/littlea.png",
+			"img/littleaaa.png",
+			"myOrderList.html"
+		],
+		"refer": [
+			"guide.html",
+			"login.html",
+			"ProjectDetails.html",
+			"myOrderList.html",
+			"home/view/myOrderList.html"
+		]
+	},
+	"news/view/news.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.css",
+			"js/mui.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"font/iconfont.css"
+		],
+		"refer": [
+			"news/view/Details.html"
+		]
+	},
+	"mine/view/mine.html": {
+		"resources": [
+			"css/mui.css",
+			"js/mui.min.js",
+			"mine/controller/mine.js",
+			"css/mui.min.css",
+			"font/iconfont.css",
+			"fonts/mui.ttf",
+			"img/head-portrait.png",
+			"img/edit-data-bg.png",
+			"img/integral.png",
+			"img/work-time.png",
+			"img/work-order.png",
+			"img/me-bg.png",
+			"img/edit-data.png",
+			"mine/view/mine.css"
+		],
+		"refer": [
+			"mine/view/myInfo.html",
+			"mine/view/myOrderList.html",
+			"mine/view/aboutUs.html",
+			"home/view/myOrderList.html"
+		]
+	},
+	"guide.html": {
+		"resources": [
+			"js/mui.min.js",
+			"img/banner1@2x.png",
+			"css/mui.css",
+			"home/view/home.html",
+			"img/guide2.png",
+			"img/guide1.png",
+			"img/guide3.png",
+			"index.html",
+			"css/mui.min.css",
+			"img/banner2.png",
+			"img/banner1.png",
+			"img/yuantiao.jpg"
+		],
+		"refer": [
+			"index.html",
+			"home/view/home.html"
+		]
+	},
+	"login.html": {
+		"resources": [
+			"css/mui.min.css",
+			"img/loginbg.png",
+			"img/logoicon.png",
+			"img/user.png",
+			"img/password.png",
+			"css/login.css",
+			"js/mui.min.js",
+			"img/login.png",
+			"ChangePassword.html",
+			"fonts/mui.ttf",
+			"img/bg.png"
+		],
+		"refer": [
+			"ChangePassword.html"
+		]
+	},
+	"ChangePassword.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"img/back-arrow.png",
+			"img/password.png",
+			"img/login.png",
+			"login.html",
+			"img/passwordnew.png",
+			"img/passwordused.png",
+			"img/passwordagain.png"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"news/view/Details.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf"
+		]
+	},
+	"ProjectDetails.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"css/ProjectDetails.css",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"img/banner2.png",
+			"img/write.png",
+			"myOrderList.html",
+			"img/write-man.png",
+			"img/date.png",
+			"img/login.png",
+			"img/case.png"
+		],
+		"refer": [
+			"myOrderList.html"
+		]
+	},
+	"mine/view/myInfo.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"mine/view/mine.css"
+		],
+		"refer": [
+			"mine/view/modifyPassword.html",
+			"ChangePassword.html"
+		]
+	},
+	"mine/view/myOrderList.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/littlea.png"
+		]
+	},
+	"mine/view/aboutUs.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"mine/view/style.css",
+			"img/logoicon.png"
+		]
+	},
+	"myOrderList.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"img/littlea.png",
+			"ProjectDetails.html"
+		],
+		"refer": [
+			"ProjectDetails.html"
+		]
+	},
+	"home/view/myOrderList.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"js/mui.min.js",
+			"img/littlea.png",
+			"css/mui.min.css",
+			"home/view/ProjectDetails.html"
+		],
+		"refer": [
+			"home/view/ProjectDetails.html"
+		]
+	},
+	"home/view/ProjectDetails.html": {
+		"resources": [
+			"home/controller/ProjectDetails.css",
+			"img/banner2.png",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/login.png",
+			"img/date.png",
+			"img/write-man.png",
+			"img/case.png",
+			"img/write.png",
+			"home/view/ProjectDetails.css",
+			"home/view/myOrderList.html",
+			"home/controller/ProjectDetails.js"
+		],
+		"refer": [
+			"home/view/Daily.html",
+			"home/view/myOrderList.html",
+			"home/view/DailyList.html",
+			"home/view/ProblemReport.html"
+		]
+	},
+	"home/view/Daily.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"home/view/home.css",
+			"img/login.png"
+		]
+	},
+	"home/view/DailyList.html": {
+		"resources": [
+			"home/view/home.css",
+			"img/date.png",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"home/view/Daily.html"
+		]
+	},
+	"home/view/ProblemReport.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"home/view/home.css"
+		]
+	},
+	"mine/view/modifyPassword.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/login.png",
+			"img/passwordagain.png"
+		]
+	}
+}

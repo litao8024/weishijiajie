@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.3,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="home.css"/>
+	</head>
+	<body>
+		<div class="mui-content" id="HomePage">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<div id="slider" class="mui-slider">
+						<!--轮播img-->
+						<div class="mui-slider-group mui-slider-loop">
+							<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="../../img/banner2.png">
+								</a>
+							</div>
+							<!-- 第一张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../img/banner1.png">
+								</a>
+							</div>
+							<!-- 第二张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../img/banner2.png">
+								</a>
+							</div>
+							<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="../../img/banner1.png">
+								</a>
+							</div>
+						</div>
+						<!--轮播圆点-->
+						<div class="mui-slider-indicator">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+						</div>
+					</div>
+					<!--工程目录-->
+					<ul class="mui-table-view mui-grid-view">
+				        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+				            <a href="#" class="project" index="实施中">
+				                <img class="mui-media-object" src="../../img/littlea.png">
+				                <div class="mui-media-body">实施中</div>
+				            </a>
+				        </li>
+				         <li class="mui-table-view-cell mui-media mui-col-xs-4">
+				            <a href="#" class="project" index="待验收">
+				                <img class="mui-media-object" src="../../img/littleaa.png">
+				                <div class="mui-media-body">待验收</div>
+				            </a>
+				        </li>
+				         <li class="mui-table-view-cell mui-media mui-col-xs-4">
+				            <a href="#" class="project" index="已完成">
+				                <img class="mui-media-object" src="../../img/littleaaa.png">
+				                <div class="mui-media-body">已完成</div>
+				            </a>
+				        </li>
+				    </ul>
+				    <!--新到工单-->
+				    <div>
+				    	<span class="Newwork">新到工单</span>
+				    </div>
+				    <div class="NewList" style="background: white;">
+				    	<div class="ul">
+				    		<div class="ProjectName">山东省立医院(西苑)网络中心设备机会大吗从农村</div>
+				    		<div class="ProjectState">
+				    			<ul class="mui-grid-view" style="padding: 0px;">
+							        <li class="mui-table-view-cell mui-media mui-col-xs-12">
+							            <a href="#" class="ProjectIcon" style="padding: 0px;">
+							                <img class="mui-media-object" src="../../img/littlea.png">
+							                <div class="mui-media-body" style="color: #666666;text-align: center;font-size: 1rem;">实施中</div>
+							            </a>
+							        </li>
+							    </ul>
+				    		</div>
+				    	</div>
+				    	<div class="ul">
+				    		<div class="ProjectName">山东省立医院(西苑)网络中心设备机会大吗从农村</div>
+				    		<div class="ProjectState">
+				    			<ul class="mui-grid-view" style="padding: 0px;">
+							        <li class="mui-table-view-cell mui-media mui-col-xs-12">
+							            <a href="#" class="ProjectIcon" style="padding: 0px;">
+							                <img class="mui-media-object" src="../../img/littleaa.png">
+							                <div class="mui-media-body" style="color: #666666;text-align: center;font-size: 1rem;">待验收</div>
+							            </a>
+							        </li>
+							    </ul>
+				    		</div>
+				    	</div>
+				    	<div class="ul last">
+				    		<div class="ProjectName">山东省立医院(西苑)网络中心设备机会大吗从农村</div>
+				    		<div class="ProjectState">
+				    			<ul class="mui-grid-view" style="padding: 0px;">
+							        <li class="mui-table-view-cell mui-media mui-col-xs-12">
+							            <a href="#" class="ProjectIcon" style="padding: 0px;">
+							                <img class="mui-media-object" src="../../img/littlea.png">
+							                <div class="mui-media-body" style="color: #666666;text-align: center;font-size: 1rem;">实施中</div>
+							            </a>
+							        </li>
+							    </ul>
+				    		</div>
+				    	</div>
+				    </div>
+					<div id="login" style="width: 100%;height: 20px;line-height: 20px;text-align: center;margin-top: 50px;background: red;">
+						登陆
+					</div>
+					<div id="reset_launch" style="width: 100%;height: 20px;line-height: 20px;text-align: center;margin-top: 50px;background: red;">
+						重置首次打开app
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../controller/home.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			var d = new Date();
+			var str = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			console.log(str)
+			mui.plusReady(function() {
+				/**
+				 * 手动关闭启动界面
+				 */
+				plus.navigator.closeSplashscreen();
+				/**
+				 * 获取当前窗口对象，并取我们之前传过来的标识；
+				 */
+				var self = plus.webview.currentWebview();
+				var mark = self.mark;
+				/**
+				 * 自动消失提示，位置为top；
+				 * http://www.html5plus.org/doc/zh_cn/nativeui.html#plus.nativeUI.ToastOption
+				 */
+//				plus.nativeUI.toast("我是从" + mark + "页面进来的", {
+//					verticalAlign: "top"
+//				});
+				document.getElementById("reset_launch").addEventListener("tap", function() {
+					/**
+					 * 系统确认对话框
+					 * http://www.html5plus.org/doc/zh_cn/nativeui.html#plus.nativeUI.confirm
+					 */
+					plus.nativeUI.confirm("是否重置首次打开app？", function(event) {
+						/**
+						 * 按钮的索引，从0开始；
+						 */
+						var index = event.index;
+						if(index == 0) {
+							/**
+							 * 通过key值删除键值对存储的数据
+							 * http://www.html5plus.org/doc/zh_cn/storage.html#plus.storage.removeItem
+							 */
+							plus.storage.removeItem("launchFlag");
+							/**
+							 * 自动消失提示，位置为center；
+							 * http://www.html5plus.org/doc/zh_cn/nativeui.html#plus.nativeUI.ToastOption
+							 */
+							plus.nativeUI.toast("重置成功，2秒后重启app。", {
+								verticalAlign: "center"
+							});
+							/**
+							 * 2秒后重启应用
+							 * http://www.html5plus.org/doc/zh_cn/runtime.html#plus.runtime.restart
+							 */
+							setTimeout(function() {
+								plus.runtime.restart();
+							}, 2000);
+						}
+					}, "重置启动", ["重置", "放弃"]);
+				});
+			});
+			/**
+			 * 重写mui.back()，一秒内连续点击两次，退出应用，仅安卓有效；
+			 */
+			var first = null;
+			mui.back = function() {
+				if(!first) {
+					first = new Date().getTime();
+					/**
+					 * 自动消失提示信息
+					 * http://www.html5plus.org/doc/zh_cn/nativeui.html#plus.nativeUI.toast
+					 */
+					plus.nativeUI.toast("再按一次退出应用");
+					setTimeout(function() {
+						first = null;
+					}, 1000);
+				} else {
+					if(new Date().getTime() - first < 1000) {
+						/**
+						 * 退出应用，仅安卓有效；
+						 * http://www.html5plus.org/doc/zh_cn/runtime.html#plus.runtime.quit
+						 */
+						plus.runtime.quit();
+					}
+				}
+			};
+		</script>
+	</body>
+</html>

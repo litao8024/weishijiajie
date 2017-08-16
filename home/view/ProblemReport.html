@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="home.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: #7c7c7d;"></a>
+			<h1 class="mui-title">问题报告</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse" id="li">
+					<a class="mui-navigate-right" href="#">问题报告</a>
+					<div class="mui-collapse-content" style="padding: 0;">
+						<div class="question">普通问题</div>
+						<div class="question">申请延期</div>
+						<div class="question">申请支援</div>
+					</div>
+				</li>
+			</ul>
+			<div class="row mui-input-row">
+				<textarea id='WorkPlan' class="mui-input-clear" placeholder="项目的情况内容" style="padding:15px 0 0 15px;"></textarea>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui(".mui-collapse-content").on("tap",".question",function(){
+				document.getElementsByClassName('mui-navigate-right')[0].innerHTML = this.innerHTML;
+				document.getElementById('li').setAttribute('class',"mui-table-view-cell mui-collapse")
+			})
+		</script>
+	</body>
+
+</html>

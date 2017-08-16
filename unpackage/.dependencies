@@ -1,0 +1,9 @@
+{
+  "news/view/news.html": {
+    "href": "news/view/news.html",
+    "resources": [
+      "fonts/mui.ttf"
+    ],
+    "priority": 1
+  }
+}

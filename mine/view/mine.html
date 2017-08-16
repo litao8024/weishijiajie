@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="mine.css"/>
+	</head>
+	<body>
+		<div class="headerView">	
+			<img src="../../img/head-portrait.png" class="headImg"/>
+			<div style="font-size: 17px;color: white;">王贺</div>
+			<div class="editImg">
+				<img src="../../img/edit-data.png" style="width: 17px;margin-top: 5px;"/>
+				<span style="color: rgb(102,102,102);font-size: 14px;float: right;display: inline-block;line-height: 27px;">编辑资料</span>
+			</div>
+		</div>
+			<!--订单状态div-->
+		<div class="mui-row menu"style=" solid white ;">
+			<div class="mui-col-xs-4 myOrderList">
+				<img src="../../img/work-order.png"/>
+				<span>我的工单</span>
+			</div>
+			<div class="mui-col-xs-4 myWorkTime">
+				<img src="../../img/work-time.png" />
+				<span>我的工时</span>
+			</div>  
+			<div class="mui-col-xs-4 myIntegral">
+				<img src="../../img/integral.png" />
+				<span>我的积分</span>
+			</div>  
+		</div>
+		<!--功能列表div-->
+		<div class="mui-scroll">
+			<div class="mui-table-view-cell"> 
+				<div class="mui-navigate-right aboutUs">
+					关于我们
+				</div>
+			</div>
+			<div class="mui-table-view-cell">
+				<div class="mui-navigate-right clear">
+					清除缓存
+				</div>
+			</div>
+			<div class="mui-table-view-cell">
+				<div class="mui-navigate-right servers">
+					服务条款
+				</div>
+			</div>
+		</div>
+		<div class="quit">
+			退出登录
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../controller/mine.js" ></script>
+		<script>
+			var dpiW = screen.width;//获取屏幕分辨率
+			var dpiH = screen.height;
+			//设置headerView的宽高
+			document.getElementsByClassName('headerView')[0].style.height = (dpiW/375*210)+'px';
+			document.getElementsByClassName('headImg')[0].style.marginTop = (dpiW/375*210)/2-30+'px';
+//			var img = mui('.headImg')[0];
+// 			clientWidth和offsetWidth获取图片的高\度???
+//			img.style.height = img.clientWidth+'px';
+//			img.style.width = img.offsetWidth/2+'px';
+		</script>
+	</body>
+
+</html> 

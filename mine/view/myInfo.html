@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="mine.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+		    <h1 class="mui-title">编辑资料</h1>
+	    </header>
+	    <div class="mui-content">
+			<div class="mui-scroll">
+				<div class="mui-table-view-cell edit">
+					<div class="mui-navigate-right">
+						<span>姓名</span>
+						<div style="float: right;">王贺</div>
+					</div>
+				</div>
+				<div class="mui-table-view-cell edit">
+					<div class="mui-navigate-right">
+						<span>公司</span>
+						<div style="float: right;">北京伟仕佳杰信息技术服务有限公司</div>
+					</div>
+				</div>
+				<div class="mui-table-view-cell edit">
+					<div class="mui-navigate-right">
+						<span>电话</span>
+						<div style="float: right;">1223234533</div>
+					</div>
+				</div>
+				<div class="mui-table-view-cell edit">
+					<div class="mui-navigate-right">
+						<span>邮箱</span>
+						<div style="float: right;">he.wang@ecsits.com</div>
+					</div>
+				</div>
+				<div class="mui-table-view-cell edit">
+					<div class="mui-navigate-right">
+						<span>所属地区</span>
+						<div style="float: right;">华北</div>
+					</div>
+				</div>
+				<div class="mui-table-view-cell edit">
+					<div class="mui-navigate-right">
+						<span>技能</span>
+						<div style="float: right;">存储</div>
+					</div>
+				</div>
+				<div class="mui-table-view-cell edit">
+					<div class="mui-navigate-right">
+						<span>证书</span>
+						<div style="float: right;">HCIE</div>
+					</div>
+				</div>
+				<div class="mui-table-view-cell edit">
+					<div class="mui-navigate-right password">
+						<span>修改密码</span>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui('.edit').on('tap','.password',function(){
+				mui.openWindow({
+					url:"../../ChangePassword.html",
+					id:"../../ChangePassword.html"
+				})
+			})
+		</script>
+	</body>
+
+</html>
