@@ -11,116 +11,141 @@
 			height: 22px;
 		}
     </style>
-    <script type="text/javascript">
-    	document.addEventListener('plusready', function() {
-			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-		});
-    </script>
 </head>
 <body>
-	<!-- 主页面标题 -->
-    <header class="mui-bar mui-bar-nav reHeaderBoxShadow">
-        <a class="" href="#offCanvasSide"></a>
-        <h1 class="mui-title" id="title">首页</h1>
-    </header>
-	<nav class="mui-bar mui-bar-tab" id="nav">
-    <a id="home" class="mui-tab-item mui-active" href="home/home.html">
+<nav class="mui-bar mui-bar-tab" id="nav">
+    <a id="home" class="mui-tab-item mui-active" href="home/view/home.html">
         <span class="mui-icon">
         	<img src="img/on-homepage.png"/>
         </span>
         <span class="mui-tab-label">首页</span>
     </a>
-    <a id="project" class="mui-tab-item" href="project/project.html">
+    <a id="project" class="mui-tab-item" href="news/view/news.html">
         <span class="mui-icon">
         	<img src="img/activity@2x.png"/>
         </span>
         <span class="mui-tab-label">消息</span> 
     </a>
-    <a id="mine" class="mui-tab-item" href="mine/mine.html">
+    <a id="mine" class="mui-tab-item" href="mine/view/mine.html">
         <span class="mui-icon">
         	<img src="img/me.png"/>
         </span>
         <span class="mui-tab-label">我的</span>
     </a>
-    </nav>
+</nav>
     <script type="text/javascript" src="js/mui.min.js" ></script>
-	<script type="text/javascript" charset="utf-8">  
-	mui.init();
-    ////引导图            
-	mui.plusReady(function() {
-		var launchFlag = plus.storage.getItem("launchFlag");
-		if(launchFlag) {
-			loadPage();
-		} else {
-			mui.openWindow({
-				url: "guide.html",
-				id: "guide"
-			});
+    <script src="js/Request.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	mui.init({
+			keyEventBind: {
+				backbutton: false  //关闭back按键监听
+			}
+		});
+		if (localStorage.getItem('login') == '1') {
+			setTimeout(function(){
+				mui.plusReady(function(){
+					plus.runtime.restart();
+				},1000)
+				localStorage.setItem('login','2')
+			},1000)
 		}
-	});
-
-	function loadPage(){
-	//底部选项卡切换跳转
-    //跳转页面
-    var subpages = ['home/view/home.html', 'news/view/news.html', 'mine/view/mine.html'];
-    var subpage_style = {
-        top: '0px',
-        bottom: '51px'
-    };
-    //首次启动切滑效果
-    mui.plusReady(function(){
-        var self = plus.webview.currentWebview();
-        for (var i = 0; i < 3; i++) {
-            var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
-            if (i > 0) {
-             sub.hide();
-            }
-            self.append(sub);
-        }
-        console.log('ssss');
-    });
-
-	<!--//点击切换-->
-	var home,project,mine,self
-      function getPage(){
-      	   	self = plus.webview.currentWebview();
-  			home=plus.webview.getWebviewById("home/view/home.html");  
-          	project = plus.webview.getWebviewById("news/view/news.html");
-      		mine = plus.webview.getWebviewById("mine/view/mine.html");
-      }
-      mui("#nav").on("tap","#home",function(){//点击触发 
-      	  getPage()  
-          home.show();
-          mui('img')[0].src = 'img/on-homepage.png';
-          mui('img')[2].src = 'img/me.png';
-          mui('img')[1].src = 'img/news-.png';
-          project.hide();
-          mine.hide();
-      })  
-      mui("#nav").on("tap","#project",function(){//点击触发  
-          getPage()
-          project.show(); 
-          mui('img')[1].src = 'img/on-news.png';
-          mui('img')[0].src = 'img/homepage.png';
-          mui('img')[2].src = 'img/me.png';
-          home.hide();
-          mine.hide();
-      })  
-      mui("#nav").on("tap","#mine",function(){//点击触发
-      	  getPage()
-          mine.show();
-          mui('img')[2].src = 'img/on-me.png';
-          mui('img')[0].src = 'img/homepage.png';
-          mui('img')[1].src = 'img/news-.png';
-          home.hide();
-          project.hide();
-      })  
-}          	
-mui.plusReady(function(){
-	var wv=plus.webview.currentWebview();
-	// 关闭侧滑返回功能
-	wv.setStyle({'popGesture':'none'});
-});
+    	//判断是否已经登陆
+    	var url = "/manage/phonelogin/exist"
+    	HttpRequest(url,function(data){
+    		console.log(JSON.stringify(data));
+    		console.log(data.status == false)
+    		if (data.status == false) {
+    			mui.openWindow({
+    				url:"login.html",
+    				id:"login.html"
+    			})
+    		}
+    	})
+		////引导图            
+		mui.plusReady(function() {
+			var launchFlag = plus.storage.getItem("launchFlag");
+			if(launchFlag) {
+				loadPage();
+			} else {
+				mui.openWindow({
+					url: "guide.html",
+					id: "guide"
+				});
+			}
+			//设置导航栏颜色
+//			var Android = navigator.userAgent.indexOf('Android') + 8;
+//			if (navigator.userAgent.substring(Android,Android+1) >= 6) {
+//				plus.navigator.setStatusBarBackground("#FFFFFF");
+//				plus.navigator.setStatusBarStyle('light');
+//			} else{
+//				mui.toast('抱歉，您的手机不支持沉浸式，请升级！');
+//			}
+		});
+		function loadPage(){
+			//底部选项卡切换跳转
+			//跳转页面
+			var subpages = ['home/view/home.html', 'news/view/news.html', 'mine/view/mine.html'];
+			var subpage_style = {
+			    top: '0px',
+				bottom: '51px'
+			};
+			//首次启动切滑效果
+			mui.plusReady(function(){
+			    var self = plus.webview.currentWebview();
+		        for (var i = 0; i < 3; i++) {
+		            var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+		            if (i > 0) {
+		             sub.hide();
+		            }
+		            self.append(sub);
+		        }
+			});
+			
+			//点击切换
+			var home,project,mine,self
+			function getPage(){
+		  	   	self = plus.webview.currentWebview();
+				home=plus.webview.getWebviewById("home/view/home.html");  
+		      	project = plus.webview.getWebviewById("news/view/news.html");
+		  		mine = plus.webview.getWebviewById("mine/view/mine.html");
+		    }
+			mui("#nav").on("tap","#home",function(){//点击触发 
+			  	getPage()  
+			    plus.webview.show(home,"fade-in",300);
+			    plus.webview.show(home)
+			    mui('img')[0].src = 'img/on-homepage.png';
+			    mui('img')[2].src = 'img/me.png';
+			    mui('img')[1].src = 'img/news-.png';
+			    plus.webview.hide(project);
+			    plus.webview.hide(mine)
+			})  
+			mui("#nav").on("tap","#project",function(){//点击触发  
+			    getPage()
+				plus.webview.show(project,"fade-in",300);
+			    plus.webview.show(project)
+			    mui('img')[1].src = 'img/on-news.png';
+			    mui('img')[0].src = 'img/homepage.png';
+			    mui('img')[2].src = 'img/me.png';
+			    plus.webview.hide(home);
+			    plus.webview.hide(mine)
+			})  
+			mui("#nav").on("tap","#mine",function(){//点击触发
+			    getPage()
+			    plus.webview.show(mine,"fade-in",300);
+			    plus.webview.show(mine)
+			    mui('img')[2].src = 'img/on-me.png';
+			    mui('img')[0].src = 'img/homepage.png';
+			    mui('img')[1].src = 'img/news-.png';
+		    })  
+		    plus.webview.hide(home);
+			plus.webview.hide(project)
+		}          	
+		mui.plusReady(function(){
+			var wv=plus.webview.currentWebview();
+			// 关闭侧滑返回功能
+			wv.setStyle({'popGesture':'none'});
+		});
     </script>
 </body>
 </html>

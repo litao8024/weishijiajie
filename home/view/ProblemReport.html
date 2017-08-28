@@ -18,22 +18,57 @@
 				<li class="mui-table-view-cell mui-collapse" id="li">
 					<a class="mui-navigate-right" href="#">问题报告</a>
 					<div class="mui-collapse-content" style="padding: 0;">
-						<div class="question">普通问题</div>
-						<div class="question">申请延期</div>
-						<div class="question">申请支援</div>
+						<div class="question" index="0">普通问题</div>
+						<div class="question" index="1">申请支援</div>
+						<div class="question" index="2">申请延期</div>
 					</div>
 				</li>
 			</ul>
 			<div class="row mui-input-row">
 				<textarea id='WorkPlan' class="mui-input-clear" placeholder="项目的情况内容" style="padding:15px 0 0 15px;"></textarea>
 			</div>
+			<div class="submit" id="submit">
+				<span>提交</span>
+			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init()
 			mui(".mui-collapse-content").on("tap",".question",function(){
 				document.getElementsByClassName('mui-navigate-right')[0].innerHTML = this.innerHTML;
 				document.getElementById('li').setAttribute('class',"mui-table-view-cell mui-collapse")
+				console.log(document.getElementsByClassName('mui-navigate-right')[0].innerHTML)
+				var index = document.getElementsByClassName('mui-navigate-right')[0].innerHTML;
+				if(index == '普通问题'){
+					type = 0;
+				}else if(index == '申请支援'){
+					type = 1;
+				}else if(index == '申请延期'){
+					type = 2;
+				}
+			})
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();
+				item_id = self.name;
+			})
+			mui('.mui-content').on('tap','.submit',function(){
+				var content = document.getElementById('WorkPlan').value;
+				var data = {type:type,problem:content,item_id:item_id};
+				ajax("/manage/phone/report_add",data,function(data){
+					console.log(JSON.stringify(data))
+					if (data.status == true) {
+//						mui.back();
+						var detailPage = null;  
+					    if(!detailPage){  
+					    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+					    }
+						mui.fire(detailPage,'submit',{
+							submit:'submit',
+						})
+					}
+					mui.toast(data.msg)
+				})
 			})
 		</script>
 	</body>

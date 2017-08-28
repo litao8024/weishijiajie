@@ -8,128 +8,126 @@
 		<link rel="stylesheet" type="text/css" href="ProjectDetails.css"/>
 	</head>
 	<body>
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
-		    <div class="mui-icon mui-icon-right-nav mui-pull-right sign" onclick="getposition()">签到</div>
+		<header class="mui-bar mui-bar-nav" style="background:white;">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="margin-left: 0px !important"></a>
+		    <div class="mui-icon mui-icon-right-nav mui-pull-right sign" onclick="getposition()">打卡</div>
 	    </header>
 		<div class="mui-content">
 			<div class="mui-scroll-wrapper">
 				<div class="mui-scroll">
-					<div class="title">山东省立医院（西院）网络中心设备采购项目</div>
+					<div id="title"> </div>
 					<div class="img">
 						
 					</div>
 					<div class="content">
 						<ul class="mui-table-view">
 							<li class="mui-table-view-cell">
-								<a>代理商<span class="mui-pull-right">北京伟仕佳杰</span></a>
+								<a>代理商<span class="mui-pull-right" id="agent"></span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>代理商联系人<span class="mui-pull-right">王贺</span></a>
+								<a>代理商联系人<span class="mui-pull-right" id="name"></span></a>
+							</li>
+							<li class="mui-table-view-cell LinkmanPhone">
+								<a>代理商联系电话<span class="mui-pull-right dial" id="phone"></span></a>
+								<!--<a><span class="mui-pull-right">李涛：18335929560</span></a>
+								<a><span class="mui-pull-right">李涛：18335929560</span></a>-->
 							</li>
 							<li class="mui-table-view-cell">
-								<a>代理商联系电话<span class="mui-pull-right">18336956213</span></a>
+								<a>代理商邮箱<span class="mui-pull-right" id="Agent-emial"></span></a>
 							</li>
-							<li class="mui-table-view-cell">
-								<a>最终客户<span class="mui-pull-right">北京伟仕佳杰</span></a>
+							<li class="mui-table-view-cell redact">
+								<a>最终客户<span class="mui-pull-right" id="Final-customer"></span></a>
 							</li>
-							<li class="mui-table-view-cell">
-								<a>最终客户联系人<span class="mui-pull-right">北京伟仕佳杰</span></a>
+							<li class="mui-table-view-cell redact">
+								<a>最终客户联系人<span class="mui-pull-right" id="Final-name"></span></a>
 							</li>
-							<li class="mui-table-view-cell">
-								<a>最终客户电话<span class="mui-pull-right">北京伟仕佳杰</span></a>
+							<li class="mui-table-view-cell redact">
+								<a>最终客户电话<span class="mui-pull-right" id="Final-phone"></span></a>
 							</li>
-							<li class="mui-table-view-cell">
-								<a>最终客户邮箱<span class="mui-pull-right">北京伟仕佳杰</span></a>
+							<li class="mui-table-view-cell redact">
+								<a>最终客户邮箱<span class="mui-pull-right" id="Final-email"></span></a>
 							</li>
 						</ul>
 						<ul class="mui-table-view">
 							<li class="mui-table-view-cell">
-								<a>项目备注<span class="mui-pull-right">北京伟仕佳杰</span></a>
+								<a href="#show">项目备注<span class="mui-pull-right" id="mark">点击查看</span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>项目实施地<span class="mui-pull-right">北京伟仕佳杰</span></a>
+								<a>项目实施地<span class="mui-pull-right" id="place"></span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>项目预估周期<span class="mui-pull-right">北京伟仕佳杰</span></a>
+								<a>项目预估周期<span class="mui-pull-right" id="cycle"></span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>项目实施工程师<span class="mui-pull-right">北京伟仕佳杰</span></a>
+								<a>项目实施工程师<span class="mui-pull-right" id="engineer"></span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>项目实施专家<span class="mui-pull-right">北京伟仕佳杰</span></a>
+								<a>项目实施专家<span class="mui-pull-right" id="expert"></span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>项目实施专家电话<span class="mui-pull-right">北京伟仕佳杰</span></a>
+								<a>项目实施专家电话<span class="mui-pull-right" id="expert-phone"></span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>项目类型<span class="mui-pull-right">北京伟仕佳杰</span></a>
+								<a>项目类型<span class="mui-pull-right" id="type"></span></a>
 							</li>
 						</ul>
 						<!--相关日报-->
-						<ul class="mui-table-view">
+						<ul class="mui-table-view dailyy">
 							<li class="mui-table-view-cell daily">
-								<a style="color: #72a5f1;font-size: 1.3rem;">相关日报<span class="mui-pull-right"><img src="../../img/write.png"/></span></a>
+								<a style="color: #72a5f1;font-size: 1.3rem;">相关日报<span class="mui-pull-right"><img id="imgg" src="../../img/write.png"/></span></a>
 							</li>
-							<li class="mui-table-view-cell">
+							<!--<li class="mui-table-view-cell">
 								<div style="font-weight: 600;display: inline-block;">填写人：</div>
-								<span style="color: 989898 !important;">王贺</span>
-							</li>
-							<li class="mui-table-view-cell">
-								<img src="../../img/date.png"/>
-								<div style="font-weight: 600;display: inline-block;" class=" mui-navigate-right">日期：</div>
-								<span style="color: 989898 !important;">2017-08-15</span>
-							</li>
-							<li class="mui-table-view-cell">
-								<img src="../../img/date.png"/>
-								<div style="font-weight: 600;display: inline-block;" class=" mui-navigate-right">日期：</div>
-								<span style="color: 989898 !important;">2017-08-15</span>
-							</li>
-							<li class="mui-table-view-cell">
+								<span id="host" style="color: 989898 !important;"> </span>
+							</li>-->
+							<!--<li class="mui-table-view-cell">
 								<img src="../../img/date.png"/>
 								<div style="font-weight: 600;display: inline-block;" class=" mui-navigate-right">日期：</div>
 								<span style="color: 989898 !important;">2017-08-15</span>
 							</li>
 							<li class="mui-table-view-cell more" style="text-align: center;">
 								更多
-							</li>
+							</li>-->
 						</ul>
 						<!--问题报告-->
-						<ul class="mui-table-view">
+						<ul class="mui-table-view HostName">
 							<li class="mui-table-view-cell Problem">
 								<a style="color: #72a5f1;font-size: 1.3rem;">问题报告<span class="mui-pull-right"><img src="../../img/write.png"/></span></a>
 							</li>
-							<li class="mui-table-view-cell">
-								<img src="../../img/write-man.png"/>
-								<div style="font-weight: 600;display: inline-block;">填写人：</div>
-								<span style="color: 989898 !important;">王贺</span>
-							</li>
-							<li class="mui-table-view-cell">
+							<!--<li class="mui-table-view-cell">
 								<a href="#middlePopover">
-									<img src="../../img/date.png"/>
-									<div style="font-weight: 600;display: inline-block;" class=" mui-navigate-right">日期：</div>
-									<span style="color: 989898 !important;">2017-08-15</span>
-									<br /><br />
-									<img src="../../img/case.png"/>
-									<div style="font-weight: 600;display: inline-block;" class=" mui-navigate-right">项目情况：</div>
-									<span style="color: 989898 !important;">硬盘没到货</span>
+									<div style="margin: 0 0 20px 6px;">
+										<img src="../../img/write-man.png"/>
+										<div style="font-weight: 600;display: inline-block;">填写人：</div>
+										<span id="HostName" style="color: 989898 !important;"></span>
+									</div>
+									<div style="margin-bottom: 20px;">
+										<img src="../../img/date.png"/>
+										<div style="font-weight: 600;display: inline-block;" class=" mui-navigate-right">日期：</div>
+										<span style="color: 989898 !important;">2017-08-15</span>
+									</div>
+									<div>
+										<img src="../../img/case.png"/>
+										<div style="font-weight: 600;display: inline-block;" class=" mui-navigate-right">问题类型：</div>
+										<span style="color: 989898 !important;">硬盘没到货</span>
+									</div>
 								</a>
-							</li>
+							</li>-->
 						</ul>
 						<!--项目文档-->
-						<ul class="mui-table-view">
+						<ul class="mui-table-view ItemWps">
 							<li class="mui-table-view-cell WpsProblem">
 								<a style="color: #72a5f1;font-size: 1.3rem;">项目文档<span class="mui-pull-right"><img src="../../img/wps.png"/></span></a>
 							</li>
-							<li class="mui-table-view-cell mui-media wps">
-								<a href="javascript:;">
-									<img class="mui-media-object mui-pull-left" src="../../img/banner2.png">
-									<div class="mui-media-body">
+							<!--<li class="mui-table-view-cell mui-media wps">
+								<a href="javascript:;">-->
+									<!--<img class="mui-media-object mui-pull-left" src="../../img/banner2.png">-->
+									<!--<div class="mui-media-body">
 										<div style="font-weight: 600;" class=" mui-navigate-right">CSP验收文档</div>
 										<div style="margin-left: 6px;margin-top:5px;">2017-08-15 王贺</div>
 									</div>
 								</a>
-							</li>
+							</li>-->
 						</ul>
 						<!--申请验收-->
 						<div class="check" id="check">
@@ -143,7 +141,15 @@
 		<div id="middlePopover" class="mui-popover">
 			问题内容
 		</div>
+		<!--点击查看-->
+		<div id="show" class="mui-popover">
+			<div id="contentt" style="width: 100% !important;height: 200px !important;overflow: auto !important;">
+				您还没有写内容。
+			</div>
+		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../controller/ProjectDetails.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 

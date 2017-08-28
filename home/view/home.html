@@ -46,32 +46,34 @@
 						</div>
 					</div>
 					<!--工程目录-->
-					<ul class="mui-table-view mui-grid-view">
-				        <li class="mui-table-view-cell mui-media mui-col-xs-4">
-				            <a href="#" class="project" index="实施中">
-				                <img class="mui-media-object" src="../../img/littlea.png">
-				                <div class="mui-media-body">实施中</div>
-				            </a>
-				        </li>
-				         <li class="mui-table-view-cell mui-media mui-col-xs-4">
-				            <a href="#" class="project" index="待验收">
-				                <img class="mui-media-object" src="../../img/littleaa.png">
-				                <div class="mui-media-body">待验收</div>
-				            </a>
-				        </li>
-				         <li class="mui-table-view-cell mui-media mui-col-xs-4">
-				            <a href="#" class="project" index="已完成">
-				                <img class="mui-media-object" src="../../img/littleaaa.png">
-				                <div class="mui-media-body">已完成</div>
-				            </a>
-				        </li>
-				    </ul>
+					<div>
+						<ul class="mui-table-view mui-grid-view" style="padding: 5px 5px 10px 5px;">
+					        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+					            <a href="#" class="project" index="1">
+					                <img class="mui-media-object" src="../../img/littlea.png">
+					                <div class="mui-media-body">实施中</div>
+					            </a>
+					        </li>
+					         <li class="mui-table-view-cell mui-media mui-col-xs-4">
+					            <a href="#" class="project" index="2">
+					                <img class="mui-media-object" src="../../img/littleaa.png">
+					                <div class="mui-media-body">待验收</div>
+					            </a>
+					        </li>
+					         <li class="mui-table-view-cell mui-media mui-col-xs-4">
+					            <a href="#" class="project" index="3">
+					                <img class="mui-media-object" src="../../img/littleaaa.png">
+					                <div class="mui-media-body">已完成</div>
+					            </a>
+					        </li>
+					    </ul>
+					</div>
 				    <!--新到工单-->
-				    <div>
+				    <div style="padding: 5px 0;background: #f6f6f6;">
 				    	<span class="Newwork">新到工单</span>
 				    </div>
 				    <div class="NewList" style="background: white;">
-				    	<div class="ul">
+				    	<!--<div class="mui-table-view-cell" style="margin:  0 10px;padding: 0px;">
 				    		<div class="ProjectName">山东省立医院(西苑)网络中心设备机会大吗从农村</div>
 				    		<div class="ProjectState">
 				    			<ul class="mui-grid-view" style="padding: 0px;">
@@ -83,38 +85,13 @@
 							        </li>
 							    </ul>
 				    		</div>
-				    	</div>
-				    	<div class="ul">
-				    		<div class="ProjectName">山东省立医院(西苑)网络中心设备机会大吗从农村</div>
-				    		<div class="ProjectState">
-				    			<ul class="mui-grid-view" style="padding: 0px;">
-							        <li class="mui-table-view-cell mui-media mui-col-xs-12">
-							            <a href="#" class="ProjectIcon" style="padding: 0px;">
-							                <img class="mui-media-object" src="../../img/littleaa.png">
-							                <div class="mui-media-body" style="color: #666666;text-align: center;font-size: 1rem;">待验收</div>
-							            </a>
-							        </li>
-							    </ul>
-				    		</div>
-				    	</div>
-				    	<div class="ul last">
-				    		<div class="ProjectName">山东省立医院(西苑)网络中心设备机会大吗从农村</div>
-				    		<div class="ProjectState">
-				    			<ul class="mui-grid-view" style="padding: 0px;">
-							        <li class="mui-table-view-cell mui-media mui-col-xs-12">
-							            <a href="#" class="ProjectIcon" style="padding: 0px;">
-							                <img class="mui-media-object" src="../../img/littlea.png">
-							                <div class="mui-media-body" style="color: #666666;text-align: center;font-size: 1rem;">实施中</div>
-							            </a>
-							        </li>
-							    </ul>
-				    		</div>
-				    	</div>
+				    	</div>-->
+				    	<!--<div style="height: 50px;"> </div>-->
 				    </div>
-					<div id="login" style="width: 100%;height: 20px;line-height: 20px;text-align: center;margin-top: 50px;background: red;">
+					<!--<div id="login" style="width: 100%;height: 20px;line-height: 20px;text-align: center;margin-top: 50px;background: red;">
 						登陆
-					</div>
-					<div id="reset_launch" style="width: 100%;height: 20px;line-height: 20px;text-align: center;margin-top: 50px;background: red;">
+					</div>-->
+					<div id="reset_launch" style="width: 100%;height: 20px;line-height: 20px;text-align: center;background: red;">
 						重置首次打开app
 					</div>
 				</div>
@@ -125,9 +102,6 @@
 		<script src="../controller/home.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init();
-			var d = new Date();
-			var str = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
-			console.log(str)
 			mui.plusReady(function() {
 				/**
 				 * 手动关闭启动界面

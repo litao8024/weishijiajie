@@ -1,11 +1,21 @@
 mui.init();
+var dpiW = screen.width;//获取屏幕分辨率
+var dpiH = screen.height;
+//设置headerView的宽高
+document.getElementsByClassName('headerView')[0].style.height = (dpiW/375*210)+'px';
+document.getElementsByClassName('headImg')[0].style.marginTop = (dpiW/375*210)/2-30+'px';
 //仿IOS滑动效果
 mui('.mui-scroll-wrapper').scroll({
     deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006 
 });
 //全局监听事件
-window.addEventListener('mine',function(e){
-	alert(e.detail.id)
+//window.addEventListener('mine',function(e){
+//	alert(e.detail.id);
+//})
+//头像 名称
+HttpRequest('/manage/phone/user',function(data){
+	console.log(JSON.stringify(data));
+	document.getElementById('user_name').innerHTML = data.name;
 })
 //编辑页面的跳转
 mui('.editImg')[0].addEventListener('tap',function(){
@@ -55,22 +65,20 @@ mui('.myOrderList')[0].addEventListener('tap',function(){
 
 //我的工时和积分的提示
 mui('.myWorkTime')[0].addEventListener('tap',function(){
-		alert('此功能还未开通');
+	alert('此功能还未开通');
 })
 mui('.myIntegral')[0].addEventListener('tap',function(){
-		alert('此功能还未开通');
+	alert('此功能还未开通');
 })
 
 
 //提示清理缓存
 mui('.clear')[0].addEventListener('tap',function(){
 	var btnArray = ['否', '是'];
-	mui.confirm('确定要清除本地缓存吗？', btnArray, function(e) {
+	mui.confirm('确定要清除本地缓存吗？','提示:',btnArray, function(e) {
 		if (e.index == 1) {
-//						info.innerText = '你刚确认MUI是个好框架';
 			mui.toast('清除成功');
 		} else {
-//						info.innerText = 'MUI没有得到你的认可，继续加油'
 			mui.toast('取消清除');
 		}
 	})
@@ -98,5 +106,18 @@ mui('.aboutUs')[0].addEventListener('tap',function(){
     },
 	});
 })
-
+//退出登录
+mui('.quit')[0].addEventListener('tap',function(){
+	var quit = "/manage/phonelogin/logout"
+	HttpRequest(quit,function(data){
+		console.log(JSON.stringify(data))
+		if(data.status == true){
+			mui.openWindow({
+				url:"../../login.html",
+				id:"../../login.html"
+			})
+		}
+		mui.toast(data.msg)
+	})
+})
 

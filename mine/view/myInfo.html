@@ -7,11 +7,19 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
 		<link rel="stylesheet" type="text/css" href="mine.css"/>
+		<style type="text/css">
+			.mui-navigate-right:after, .mui-push-right:after{
+				display: none;
+			}
+			.password:after{
+				display: block;
+			}
+		</style>
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+		<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: #7b7b7b;"></a>
 		    <h1 class="mui-title">编辑资料</h1>
 	    </header>
 	    <div class="mui-content">
@@ -19,43 +27,43 @@
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>姓名</span>
-						<div style="float: right;">王贺</div>
+						<div style="float: right;" id="name"></div>
 					</div>
 				</div>
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>公司</span>
-						<div style="float: right;">北京伟仕佳杰信息技术服务有限公司</div>
+						<div style="float: right;" id="company"></div>
 					</div>
 				</div>
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>电话</span>
-						<div style="float: right;">1223234533</div>
+						<div style="float: right;" id="phone"></div>
 					</div>
 				</div>
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>邮箱</span>
-						<div style="float: right;">he.wang@ecsits.com</div>
+						<div style="float: right;" id="email"></div>
 					</div>
 				</div>
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>所属地区</span>
-						<div style="float: right;">华北</div>
+						<div style="float: right;" id="area"></div>
 					</div>
 				</div>
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>技能</span>
-						<div style="float: right;">存储</div>
+						<div style="float: right;" id="skill">存储</div>
 					</div>
 				</div>
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>证书</span>
-						<div style="float: right;">HCIE</div>
+						<div style="float: right;" id="diploma">HCIE</div>
 					</div>
 				</div>
 				<div class="mui-table-view-cell edit">
@@ -66,6 +74,7 @@
 			</div>
 		</div>	
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init()
 			mui('.edit').on('tap','.password',function(){
@@ -74,7 +83,14 @@
 					id:"../../ChangePassword.html"
 				})
 			})
+			HttpRequest('/manage/phone/user',function(data){
+				console.log(JSON.stringify(data));
+				document.getElementById('name').innerHTML = data.name;
+				document.getElementById('company').innerHTML = data.company;
+				document.getElementById('area').innerHTML = data.area;
+				document.getElementById('email').innerHTML = data.email;
+				document.getElementById('phone').innerHTML = data.phone;
+			})
 		</script>
 	</body>
-
 </html>

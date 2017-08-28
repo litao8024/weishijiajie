@@ -26,28 +26,30 @@
 	    		<div class="WorkPlan">
 	    			工作内容
 	    		</div>
-				<textarea id='WorkPlan' class="mui-input-clear question" placeholder="写下你的工作内容"></textarea>
+				<textarea id='WorkContent' class="mui-input-clear question" placeholder="写下你的工作内容"></textarea>
 			</div>
 			<!--计划完成及遇到的问题-->
 	    	<div class="row mui-input-row">
 	    		<div class="WorkPlan">
 	    			计划完成及遇到的问题
 	    		</div>
-				<textarea id='WorkPlan' class="mui-input-clear question" placeholder="写下你的工作内容"></textarea>
+				<textarea id='WorkProblem' class="mui-input-clear question" placeholder="写下你的工作内容"></textarea>
 			</div>
 			<!--项目总进度-->
 	    	<div class="row mui-input-row">
 	    		<div class="WorkPlan">
 	    			项目总进度
 	    		</div>
-				<textarea id='WorkPlan' class="mui-input-clear question" placeholder="项目进行程度"></textarea>
+				<textarea id='AllPlan' class="mui-input-clear question" placeholder="项目进行程度"></textarea>
 			</div>
 			<!--提交-->
-			<div class="submit" id="submit">
+			<div class="submit" id="submit" onclick="submit()">
 				<span>提交</span>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../controller/Daily.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 
 </html>

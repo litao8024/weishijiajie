@@ -5,41 +5,109 @@ mui('.mui-scroll-wrapper').scroll({
 })
 //项目详情
 mui('.mui-table-view-cell').on('tap','.project',function(){
-	alert(this.getAttribute("index"))
+	console.log(this.getAttribute("index"))
+	localStorage.setItem('index',this.getAttribute("index"))
 	mui.openWindow({
 		url:"../view/myOrderList.html",
 		id:"../view/myOrderList.html",
+		extras:{
+			name:this.getAttribute("index")
+		}
 	})
 })
-mui('.NewList').on('tap','.ul',function(){
-	alert("om")
-	mui.openWindow({
-		url:"../view/myOrderList.html",
-		id:"../view/myOrderList.html",
-	})
-})
-//点击登陆
-document.getElementById('login').addEventListener('tap',function(){
-	mui.openWindow({
-		url:"../../login.html",
-		id:"../../login.html",
-		show: {  
-	        autoShow: true, //页面loaded事件发生后自动显示，默认为true  
-	        aniShow: 'slide-in-bottom', //页面显示动画，默认为”slide-in-right“；  
-	        duration: 400 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；  
-	    },
-	})
-	var detailPage = null;
-	if (!detailPage) {
-		detailPage = plus.webview.getWebviewById('mine/view/mine.html');
+//mui('.NewList').on('tap','.ul',function(){
+//	alert('22')
+//	mui.openWindow({
+//		url:"../view/myOrderList.html",
+//		id:"../view/myOrderList.html",
+//	})
+//})
+//新到工单
+var NewWork = "/manage/phone/index"
+HttpRequest(NewWork,function(data){  
+	console.log(JSON.stringify(data));
+	var view = document.getElementsByClassName('NewList')[0];
+	for (var i=0;i<data.length;i++) {
+		console.log(data[i].id)
+		var cell = document.createElement('div');
+		cell.setAttribute('class','mui-table-view-cell');
+		cell.setAttribute('style','margin: 0 10px;padding:0px !important');
+		cell.setAttribute('id',data[i].id)
+		view.appendChild(cell);
+		
+		var div1 = document.createElement('div');
+		div1.setAttribute('class','ProjectName');
+		div1.innerText = data[i].item_name;
+		cell.appendChild(div1);
+		
+		var div2 = document.createElement('div');
+		div2.setAttribute('class','ProjectState');
+		cell.appendChild(div2);
+		
+		var ul = document.createElement('ul');
+		ul.setAttribute('class','mui-grid-view');
+		ul.setAttribute('style','padding: 0px;');
+		div2.appendChild(ul);
+		
+		var li = document.createElement('li');
+		li.setAttribute('class','mui-table-view-cell mui-media mui-col-xs-12');
+		ul.appendChild(li);
+		
+		var a = document.createElement('a');
+		a.setAttribute('class','ProjectIcon');
+		a.setAttribute('style','padding: 0px;');
+		li.appendChild(a);
+		
+		var img = document.createElement('img');
+		img.setAttribute('class','mui-media-object');
+		img.setAttribute('id',data[i].id)
+		if (data[i].item_status == 1) {
+			img.setAttribute('src','../../img/littlea.png');
+			a.appendChild(img);
+			var div3 = document.createElement('div');
+			div3.setAttribute('class','mui-media-body');
+			div3.setAttribute('style','color: #666666;text-align: center;font-size: 1rem;');
+			div3.innerHTML = "实施中"
+			a.appendChild(div3)
+		} else if(data[i].item_status == 2){
+			img.setAttribute('src','../../img/littleaa.png');
+			a.appendChild(img);
+			var div3 = document.createElement('div');
+			div3.setAttribute('class','mui-media-body');
+			div3.setAttribute('style','color: #666666;text-align: center;font-size: 1rem;');
+			div3.innerHTML = "待验收"
+			a.appendChild(div3)
+		}else{
+			img.setAttribute('src','../../img/littleaaa.png');
+			a.appendChild(img);
+			var div3 = document.createElement('div');
+			div3.setAttribute('class','mui-media-body');
+			div3.setAttribute('style','color: #666666;text-align: center;font-size: 1rem;');
+			div3.innerHTML = "已完成"
+			a.appendChild(div3)
+		}
+		var div4 = document.createElement('div');
+		div4.setAttribute('style','height: 30px;');
 	}
-	mui.fire(detailPage,'mine',{
-		id:'mine'
+	view.appendChild(div4)
+	mui('.NewList').on('tap','.mui-table-view-cell',function(){
+		console.log(this.getAttribute('id'));
+		mui.openWindow({
+			url:"ProjectDetails.html",
+			id:"ProjectDetails.html",
+			extras:{
+				name:this.getAttribute('id')
+			}
+		})
 	})
-})
-
-var url = 'http://43.254.3.166/index.php/app_api/api/login';
-var data = {username:"18335929560",password:"12345678"}
-ajax('http://43.254.3.166/index.php/app_api/api/login',data,function(data){
-	console.log(JSON.stringify(data))
+	mui('.NewList').on('tap','img',function(){
+		console.log(this.getAttribute('id'));
+		mui.openWindow({
+			url:"ProjectDetails.html",
+			id:"ProjectDetails.html",
+			extras:{
+				name:this.getAttribute('id')
+			}
+		})
+	})
 })

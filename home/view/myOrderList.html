@@ -11,30 +11,54 @@
 			}
 			.mui-table-view-cell{
 				background-color: white;
+				padding: 5px 15px !important;
 				height: 68px;
 				color: rgb(51,51,51);
 			}
+			.mui-table-view-cell:after{
+				left: 0px !important;
+			}
 			.mui-table-view-cell .content{
-				line-height: 44px;
-				font-size: 16px;
-				text-overflow：ellipsis;
+				display: inline-block;
+				height: 4rem;
+				width: 80%;
+				line-height: 4rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow:ellipsis ;
+				vertical-align: middle;
+				margin-bottom: 5px;
+				color: #333333;
 			}
 			.mui-table-view-cell .content span{
 				color: rgb(102,102,102);
+			}
+			.nonework{
+			    width: 200px;
+			    height: 50px;
+			    position: relative;
+			    left: 50%;
+			    margin-top: 20%;
+			    margin-left: -100px;
+			    text-align: center;
+			    color: #a2a2a2;
 			}
 		</style>
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: #7B7B7C;"></a>
 		    <h1 class="mui-title">我的工单</h1>
 	    </header>
 	    <div class="mui-content mui-scroll-wrapper">
 			<!--功能列表div-->
 			<div class="mui-scroll">
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
+				<!--<div class="nonework">
+					此状态下没有工单
+				</div>-->
+				<!--<div class="mui-table-view-cell">
+					<div class="content">
 						山东省立医院（西院）网络中心设备...
 					</div>
 					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
@@ -42,121 +66,14 @@
 						<div style="font-size: 12px;">实施中</div>
 					</div>
 				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell">
-					<div class="content" style="float: left;">
-						山东省立医院（西院）网络中心设备...
-					</div>
-					<div style="float: right;width: 40px;height: 44px;text-align: center;margin-top: 10px;">
-						<img src="../../img/littlea.png" style="width: 22px;height: 22px;"/>
-						<div style="font-size: 12px;">实施中</div>
-					</div>
-				</div>	    	
-		   </div>
+		   </div>-->
 	   </div>
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../controller/myOrderList.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init()
-			mui('.mui-scroll-wrapper').scroll({
-				 scrollY: true, //是否竖向滚动
-				 scrollX: false, //是否横向滚动
-				 startX: 0, //初始化时滚动至x
-				 startY: 0, //初始化时滚动至y
-				 indicators: false, //是否显示滚动条
-				 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
-				 bounce: true, //是否启用回弹 
-			});
-			var dpiW = screen.width;//获取屏幕分辨率
-			var s = document.getElementsByClassName('content').length;
-			console.log(s);
-			for(var i=0;i<s;i++){
-				document.getElementsByClassName('content')[i].style.width = (dpiW/375*285)+'px';
-			}
-			mui(".mui-scroll").on("tap",'.mui-table-view-cell',function(){
-				mui.openWindow({
-					url:"ProjectDetails.html",
-					id:"ProjectDetails.html",
-				})
+			window.addEventListener('apply',function(){
+				window.location.reload();
 			})
 		</script>
 	</body>

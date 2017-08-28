@@ -1,72 +1,76 @@
-mui.init();
-////引导图            
-mui.plusReady(function() {
-	var launchFlag = plus.storage.getItem("launchFlag");
-	if(launchFlag) {
-		loadPage();
-	} else {
-		mui.openWindow({
-			url: "home/guide.html",
-			id: "guide"
-			});
-		}
-});
-function loadPage(){
-	//底部选项卡切换跳转
-	//跳转页面
-	var subpages = ['home/home.html', 'project/project.html', 'mine/mine.html'];
-	var subpage_style = {
-	    top: '0px',
-		bottom: '51px'
-	};
-	//首次启动切滑效果
-	mui.plusReady(function(){
-	    var self = plus.webview.currentWebview();
-        for (var i = 0; i < 3; i++) {
-            var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
-            if (i > 0) {
-             sub.hide();
+//获取当前应用的版本号
+var wgtVer=null;
+function plusReady(){
+    // 获取本地应用资源版本号
+    plus.runtime.getProperty(plus.runtime.appid,function(inf){
+        wgtVer=inf.version;
+        console.log("当前应用版本："+wgtVer);
+    });
+}
+if(window.plus){
+    plusReady();
+}else{
+    document.addEventListener('plusready',plusReady,false);
+}
+//发起ajax请求检测是否有新版本
+// 检测更新
+var checkUrl="http://demo.dcloud.net.cn/test/update/check.php";
+function checkUpdate(){
+    plus.nativeUI.showWaiting("检测更新...");
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        switch(xhr.readyState){
+            case 4:
+            plus.nativeUI.closeWaiting();
+            if(xhr.status==200){
+                console.log("检测更新成功："+xhr.responseText);
+                var newVer=xhr.responseText;
+                if(wgtVer&&newVer&&(wgtVer!=newVer)){
+                    downWgt();  // 下载升级包
+                }else{
+                    plus.nativeUI.alert("无新版本可更新！");
+                }
+            }else{
+                console.log("检测更新失败！");
+                plus.nativeUI.alert("检测更新失败！");
             }
-            self.append(sub);
+            break;
+            default:
+            break;
         }
-        console.log('ssss');
-	});
-	
-	//点击切换
-	var home,project,mine,self
-	function getPage(){
-  	   	self = plus.webview.currentWebview();
-		home=plus.webview.getWebviewById("home/home.html");  
-      	project = plus.webview.getWebviewById("project/project.html");
-  		mine = plus.webview.getWebviewById("mine/mine.html");
     }
-	mui("#nav").on("tap","#home",function(){//点击触发 
-	  	getPage()  
-	    home.show();
-	    console.log('lll')
-	    mui('img')[0].src = 'img/on-homepage.png';
-	    mui('img')[2].src = 'img/me.png';
-	    mui('img')[1].src = 'img/news-.png';
-	    project.hide();
-	    mine.hide();
-	})  
-	mui("#nav").on("tap","#project",function(){//点击触发  
-	    getPage()
-	    project.show(); 
-	    mui('img')[1].src = 'img/on-news.png';
-	    mui('img')[0].src = 'img/homepage.png';
-	    mui('img')[2].src = 'img/me.png';
-	    home.hide();
-	    mine.hide();
-	})  
-	mui("#nav").on("tap","#mine",function(){//点击触发
-	    getPage()
-	    mine.show();
-	    mui('img')[2].src = 'img/on-me.png';
-	    mui('img')[0].src = 'img/homepage.png';
-	    mui('img')[1].src = 'img/news-.png';
-	        home.hide();
-	        project.hide();
-	    })  
-}          	
-         
+    xhr.open('GET',checkUrl);
+    xhr.send();
+}
+//从服务器下载应用资源包（wgt文件）
+// 下载wgt文件
+var wgtUrl="http://demo.dcloud.net.cn/test/update/H5EF3C469.wgt";
+function downWgt(){
+    plus.nativeUI.showWaiting("下载wgt文件...");
+    plus.downloader.createDownload( wgtUrl, {filename:"_doc/update/"}, function(d,status){
+        if ( status == 200 ) { 
+            console.log("下载wgt成功："+d.filename);
+            installWgt(d.filename); // 安装wgt包
+        } else {
+            console.log("下载wgt失败！");
+            plus.nativeUI.alert("下载wgt失败！");
+        }
+        plus.nativeUI.closeWaiting();
+    }).start();
+}
+//更新应用资源包（wgt文件）
+// 更新应用资源
+function installWgt(path){
+    plus.nativeUI.showWaiting("安装wgt文件...");
+    plus.runtime.install(path,{},function(){
+        plus.nativeUI.closeWaiting();
+        console.log("安装wgt文件成功！");
+        plus.nativeUI.alert("应用资源更新完成！",function(){
+            plus.runtime.restart();
+        });
+    },function(e){
+        plus.nativeUI.closeWaiting();
+        console.log("安装wgt文件失败["+e.code+"]："+e.message);
+        plus.nativeUI.alert("安装wgt文件失败["+e.code+"]："+e.message);
+    });
+}

@@ -11,86 +11,66 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: #969896;"></a>
-		    <h1 class="mui-title">问题列表</h1>
+		    <h1 class="mui-title">日报列表</h1>
 	    </header>
 	    <div class="mui-content">
-			<div class="mui-scroll-wrapper">
+			<div class="mui-scroll-wrapper" style="margin-top: 44px;">
 				<div class="mui-scroll">
 					<ul class="mui-table-view ListUl">
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
+						<!--<li class="mui-table-view-cell" style="height: 50px;">
+							<img src="../../img/date.png"/ style="vertical-align: middle;width: 2rem;height: 2rem ;">
 							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
 							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
 						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-						<li class="mui-table-view-cell" style="height: 60px;">
-							<img src="../../img/date.png"/ style="vertical-align: middle;">
-							<div style="font-weight: 600;display: inline-block;vertical-align: middle;" class=" mui-navigate-right">日期：</div>
-							<span style="color: 989898 !important;vertical-align: middle;">2017-08-15</span>
-						</li>
-					</ul>
+					</ul>-->
 				</div>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../controller/DailyList.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init()
-			mui('.mui-scroll-wrapper').scroll({
-				deceleration:0.0005
-			})
-			mui('.mui-table-view').on("tap",".mui-table-view-cell",function(){
-				mui.openWindow({
-					url:"Daily.html",
-					id:"Daily.html",
-					show: {  
-				        autoShow: true, //页面loaded事件发生后自动显示，默认为true  
-				        aniShow: 'slide-in-bottom', //页面显示动画，默认为”slide-in-right“；  
-				        duration: 400 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；  
-				    },
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();
+				console.log(self.name)
+				var data = {id:self.name};
+				console.log(JSON.stringify(data))
+				var ul = document.getElementsByClassName('ListUl')[0];
+				ajax("/manage/phone/daily_lists",data,function(data){
+					console.log(JSON.stringify(data));
+					for (var i=0;i<data.length;i++) {
+						var li = document.createElement('li');
+						li.setAttribute('class','mui-table-view-cell');
+						li.setAttribute('style','height: 50px;');
+						li.setAttribute('index',data[i].id)
+						ul.appendChild(li);
+					
+						var img = document.createElement('img');
+						img.setAttribute('src','../../img/date.png');
+						img.setAttribute('style','vertical-align: middle;width: 2rem;height: 2rem ;');
+						li.appendChild(img);
+					
+						var div = document.createElement('div');
+						div.setAttribute('style','font-weight: 600;display: inline-block;vertical-align: middle;margin-left: 10px;');
+						div.setAttribute('class','mui-navigate-right');
+						div.innerHTML = '日期：';
+						li.appendChild(div);
+					
+						var span = document.createElement('span');
+						span.setAttribute('style','vertical-align: middle;');
+						span.innerHTML = data[i].date;
+						li.appendChild(span);
+					}
+					mui('.ListUl').on('tap','li',function(){
+						console.log(this.getAttribute('index'))
+						mui.openWindow({
+							url:"DailyNo.html",
+							id:"DailyNo.html",
+							extras:{
+								name:this.getAttribute('index')
+							},
+						})
+					})
 				})
 			})
 		</script>

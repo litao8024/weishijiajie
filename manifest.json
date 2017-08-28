@@ -5,7 +5,7 @@
 		"iPad"
 	],
 	"id": "H5641BFEE",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "工程师手机端",/*应用名称，程序桌面图标名称*/
+	"name": "pmsApp",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "1.0.0",/*应用版本名称*/
 		"code": "83"
@@ -125,6 +125,8 @@
 				"password": "",/*iOS应用打包个人证书导入密码*/
 				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
 				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"UIReserveStatusbarOffse":true,
+				"UIStatusBarStyle":"dark",
 				"frameworks": []
 			},
 			"google": {
@@ -221,7 +223,9 @@
 					"img/activity@2x.png",
 					"img/homepage.png",
 					"img/on-me.png",
-					"img/news-.png"
+					"img/news-.png",
+					"js/Request.js",
+					"login.html"
 				],
 				"refer": [
 					"mine/view/mine.html",
@@ -261,7 +265,8 @@
 				"refer": [
 					"guide.html",
 					"login.html",
-					"home/view/myOrderList.html"
+					"home/view/myOrderList.html",
+					"home/view/ProjectDetails.html"
 				],
 				"priority": 0
 			},
@@ -272,10 +277,13 @@
 					"js/mui.js",
 					"css/mui.min.css",
 					"fonts/mui.ttf",
-					"font/iconfont.css"
+					"font/iconfont.css",
+					"js/immersed.js"
 				],
 				"refer": [
-					"news/view/Details.html"
+					"news/view/Details.html",
+					"news/view/doc.html",
+					"news/view/dd.html"
 				],
 				"priority": 0
 			},
@@ -294,7 +302,9 @@
 					"img/work-order.png",
 					"img/me-bg.png",
 					"img/edit-data.png",
-					"mine/view/mine.css"
+					"mine/view/mine.css",
+					"js/Request.js",
+					"login.html"
 				],
 				"refer": [
 					"mine/view/myInfo.html",
@@ -335,9 +345,12 @@
 					"img/login.png",
 					"ChangePassword.html",
 					"fonts/mui.ttf",
-					"img/bg.png"
+					"img/bg.png",
+					"js/Request.js"
 				],
-				"refer": [],
+				"refer": [
+					"index.html"
+				],
 				"priority": 0
 			},
 			"ChangePassword.html": {
@@ -351,7 +364,8 @@
 					"login.html",
 					"img/passwordnew.png",
 					"img/passwordused.png",
-					"img/passwordagain.png"
+					"img/passwordagain.png",
+					"js/Request.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -387,7 +401,8 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"mine/view/mine.css"
+					"mine/view/mine.css",
+					"js/Request.js"
 				],
 				"refer": [
 					"mine/view/modifyPassword.html",
@@ -433,7 +448,12 @@
 					"js/mui.min.js",
 					"img/littlea.png",
 					"css/mui.min.css",
-					"home/view/ProjectDetails.html"
+					"home/view/ProjectDetails.html",
+					"home/controller/myOrderList.js",
+					"js/Request.js",
+					"home/view/home.css",
+					"img/littleaaa.png",
+					"img/littleaa.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -454,13 +474,17 @@
 					"home/view/myOrderList.html",
 					"home/controller/ProjectDetails.js",
 					"img/wps.png",
-					"img/cbd.jpg"
+					"img/cbd.jpg",
+					"js/Request.js",
+					"js/jquery-1.9.1.min.js"
 				],
 				"refer": [
 					"home/view/Daily.html",
 					"home/view/DailyList.html",
 					"home/view/ProblemReport.html",
-					"home/view/textDocument.html"
+					"home/view/textDocument.html",
+					"home/view/DailyNo.html",
+					"home/view/Edit.html"
 				],
 				"priority": 0
 			},
@@ -470,7 +494,9 @@
 					"fonts/mui.ttf",
 					"css/mui.min.css",
 					"home/view/home.css",
-					"img/login.png"
+					"img/login.png",
+					"home/controller/Daily.js",
+					"js/Request.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -481,10 +507,14 @@
 					"img/date.png",
 					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"home/controller/Daily.js",
+					"js/Request.js",
+					"home/controller/DailyList.js"
 				],
 				"refer": [
-					"home/view/Daily.html"
+					"home/view/Daily.html",
+					"home/view/DailyNo.html"
 				],
 				"priority": 0
 			},
@@ -493,7 +523,9 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"home/view/home.css"
+					"home/view/home.css",
+					"img/login.png",
+					"js/Request.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -516,7 +548,63 @@
 					"css/mui.min.css",
 					"img/takephoto.png",
 					"img/Layer-1.png",
-					"home/controller/textDocument.js"
+					"home/controller/textDocument.js",
+					"js/Request.js",
+					"img/muwu.jpg",
+					"js/plupload.full.min.js",
+					"js/jquery.min.js"
+				],
+				"refer": [
+					"home/view/work.html"
+				],
+				"priority": 0
+			},
+			"news/view/doc.html": {
+				"resources": [
+					"js/immersed.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"news/view/dd.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"home/view/DailyNo.html": {
+				"resources": [
+					"home/controller/Daily.js",
+					"home/view/home.css",
+					"js/mui.min.js",
+					"img/login.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/Request.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"home/view/work.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"home/view/Edit.html": {
+				"resources": [
+					"js/Request.js",
+					"js/mui.min.js",
+					"img/login.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0

@@ -91,7 +91,7 @@
 				 */
 				var imgs = document.querySelectorAll(".guide-img");
 				for(var i = 0, len = imgs.length; i < len; i++) {
-					imgs[i].style.height = (h - sh) + "px";
+					imgs[i].style.height = h + "px";
 					imgs[i].style.width = w + "px";
 				}
 				/**
@@ -112,6 +112,9 @@
 							mark: "gudie" //同样，这里也只是个标识，实际开发中并不用；
 						}
 					});
+					setTimeout(function(){
+						plus.runtime.restart()
+					},1000)
 				});
 			});
 		</script>

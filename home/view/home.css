@@ -2,12 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
-/*.mui-scroll-wrapper{
-	margin-top: 45px !important;
-}*/
 .project img{
-	width: 2.5rem !important;
-    height: 2.5rem !important;
+	width: 3rem !important;
+    height: 3rem !important;
 }
 .Newwork{
 	height: 30px;
@@ -16,26 +13,15 @@
 	font-size: 1.2rem;
 	margin-left: 4%;
 }
-.ul{
-	border-bottom: 1px solid #b7b7b7;
-	width: 92%;
-	margin-left: 4%;
-}
-.last{
-	width: 92%;
-	margin-left: 4%;
-	border: none !important;
-}
 .ProjectName{
 	display: inline-block;
-	height: 4rem;
+	height: 1.5rem;
 	width: 80%;
-	line-height: 4rem;
+	line-height: 1.5rem;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow:ellipsis ;
 	vertical-align: middle;
-	margin-bottom: 5px;
 	color: #333333;
 }
 .ProjectState{
@@ -56,7 +42,7 @@
 	position: relative;
 	left: 50%;
 	width: 2rem;
-	height: 2rem;
+	height: 2rem !important;
 	margin-left: -1rem;
 }
 .WorkPlan{
@@ -69,8 +55,21 @@
 	text-indent: 15px;
 }
 #WorkPlan{
-	height: 200px;
+	height: 150px;
 	border: none;
+}
+#WorkContent{
+	height: 150px;
+	border: none;
+}
+#WorkProblem{
+	height: 150px;
+	border: none;
+}
+#AllPlan{
+	height: 50px;
+	border: none;
+	line-height: 30px;
 }
 .submit{
 	height: 40px;
@@ -105,4 +104,10 @@
 .mui-bar-nav{
 	box-shadow: none;
 	border: 1px solid #B7B7B7;
+}
+.mui-table-view:after{
+	height: 0px !important;
+}
+.mui-table-view-cell:after{
+	left: 0px !important;
 }

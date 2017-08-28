@@ -22,35 +22,61 @@
 			<div class="content">
 				<div class="key mui-input-row">
 					<img src="img/user.png"/>
-					<input id='account' type="number" class="mui-input-clear mui-input mui-content-padded" placeholder="请输入手机号码" onblur="checkMobile()">
+					<input id='key' type="text" class="mui-input-clear mui-input mui-content-padded" placeholder="请输入邮箱账号">
 				</div>
 				<div class="key mui-input-row">
 					<img src="img/password.png"/>
-					<input type="password" name="" id="keyss" placeholder="请输入密码" class="mui-input-clear mui-input"/>
+					<input type="password" name="" id="password" placeholder="请输入密码" class="mui-input-clear mui-input"/>
 				</div>
 				<div class="login" id="login">
 					<span id="span">登录</span>
 				</div>
-				<div class="bottom">
-					<a href="ChangePassword.html"><span style="float: right;">修改密码</span></a>
-				</div>
+				<!--<div class="bottom">
+					<a href="javascript:"><span style="float: right;">修改密码</span></a>
+				</div>-->
 			</div>
 		</div>
 		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/Request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init();
+//			mui.init({
+//				keyEventBind: {
+//					backbutton: false  //关闭back按键监听
+//				}
+//			});
+			mui.init()
 			var PhoneWidth = window.screen.width;
 			console.log(PhoneWidth)
 			document.getElementsByClassName("Top")[0].style.height = PhoneWidth * 0.533 + "px";
 			document.getElementsByClassName('Toplog')[0].style.top = PhoneWidth * 0.533 + "px";
-			//		验证手机号码
-			function checkMobile(){ 
-			    var sMobile = document.getElementById('account').value;
-			    if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(sMobile))){ 
-			        mui.toast("请输入正确的手机号码"); 
-			        return false; 
-			    } 
-			}
+			//点击登陆
+			mui('.content').on("tap",'#login',function(){
+				var url = "/manage/phonelogin/login";
+				var key = document.getElementById('key').value;
+				var password = document.getElementById('password').value;
+				var data = {email:key,pwd:password}
+				ajax(url,data,function(data){
+					if (data.status == true) {
+						mui.openWindow({
+							url:"index.html",
+							id:"index.html"
+						})
+						localStorage.setItem('login','1')
+//						mui.plusReady(function(){
+//							plus.runtime.restart()
+//						})
+					}else{
+						mui.toast(data.msg)
+					}
+				})
+			})
+			//修改密码
+//			mui('.content').on("tap",'.bottom',function(){
+//				mui.openWindow({
+//					url:"ChangePassword.html",
+//					id:"ChangePassword.html"
+//				})
+//			})
 		</script>
 	</body>
 </html>
