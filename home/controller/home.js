@@ -3,18 +3,6 @@ mui.init();
 mui('.mui-scroll-wrapper').scroll({
 	deceleration:0.0005
 })
-//判断是否已经登陆
-//var url = "/manage/phonelogin/exist"
-//HttpRequest(url,function(data){
-//	console.log(JSON.stringify(data));
-//	console.log(data.status == false)
-//	if (data.status == false) {
-//		mui.openWindow({
-//			url:"../../login.html",
-//			id:"../../login.html"
-//		})
-//	}
-//})
 //项目详情
 mui('.mui-table-view-cell').on('tap','.project',function(){
 	console.log(this.getAttribute("index"))
@@ -96,8 +84,8 @@ HttpRequest(NewWork,function(data){
 		}
 		var div4 = document.createElement('div');
 		div4.setAttribute('style','height: 30px;');
-		view.appendChild(div4)
 	}
+	view.appendChild(div4)
 	mui('.NewList').on('tap','.mui-table-view-cell',function(){
 		console.log(this.getAttribute('id'));
 		console.log(this.getAttribute('index'))

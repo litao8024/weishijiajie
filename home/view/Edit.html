@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.edit{
+				height: 47px;
+				width: 80%;
+				margin-left: 10%;
+				text-align: center;
+				line-height: 40px;
+				margin-top: 20px;
+				color: #FFFFFF;
+				background: url(../../img/login.png) no-repeat;
+				background-size: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: #7B7B7C;"></a>
+		    <h1 class="mui-title">编辑信息</h1>
+	    </header>
+	    <div class="mui-content">
+	    	<textarea id='edit' class="mui-input-clear question" placeholder="编辑内容" style="height: 200px;border: none;"></textarea>
+	    	<div class="edit">
+	    		保存
+	    	</div>
+	    </div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-content').on('tap','.edit',function(){
+				mui.plusReady(function(){
+					var self = plus.webview.currentWebview();
+					var edit = self.edit;
+					console.log(edit)
+					var value = document.getElementById('edit').value;
+					if (edit == 0) {
+						data = {final_customer:value,item_id:self.name};
+						console.log(JSON.stringify(data))
+						ajax("/manage/phone/edit",data,function(data){
+							console.log(JSON.stringify(data))
+							if (data.status == true) {
+								mui.back();
+								var detailPage = null;  
+							    if(!detailPage){  
+							    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+							    }
+								mui.fire(detailPage,'submit',{
+									submit:'submit',
+								})
+							}
+						})
+					}else if(edit == 1){
+						data = {final_contacts:value,item_id:self.name};
+						console.log(JSON.stringify(data))
+						ajax("/manage/phone/edit",data,function(data){
+							console.log(JSON.stringify(data));
+							if (data.status == true) {
+								mui.back();
+								var detailPage = null;  
+							    if(!detailPage){  
+							    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+							    }
+								mui.fire(detailPage,'submit',{
+									submit:'submit',
+								})
+							}
+						})
+					}else if(edit == 2){
+						data = {final_phone:value,item_id:self.name};
+						console.log(JSON.stringify(data))
+						ajax("/manage/phone/edit",data,function(data){
+							console.log(JSON.stringify(data));
+							if (data.status == true) {
+								var detailPage = null;  
+							    if(!detailPage){  
+							    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+							    }
+								mui.fire(detailPage,'submit',{
+									submit:'submit',
+								})
+								setTimeout(function(){
+									mui.back();
+								},1000)
+							}
+						})
+					}else if(edit == 3){
+						data = {final_email:value,item_id:self.name};
+						console.log(JSON.stringify(data))
+						ajax("/manage/phone/edit",data,function(data){
+							console.log(JSON.stringify(data))
+							if (data.status == true) {
+								mui.back();
+								var detailPage = null;  
+							    if(!detailPage){  
+							    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+							    }
+								mui.fire(detailPage,'submit',{
+									submit:'submit',
+								})
+							}
+						})
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

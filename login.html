@@ -45,7 +45,6 @@
 				}
 			});
 			var PhoneWidth = window.screen.width;
-			console.log(PhoneWidth)
 			document.getElementsByClassName("Top")[0].style.height = PhoneWidth * 0.533 + "px";
 			document.getElementsByClassName('Toplog')[0].style.top = PhoneWidth * 0.533 + "px";
 			//点击登陆
@@ -56,11 +55,18 @@
 				var data = {email:key,pwd:password}
 				ajax(url,data,function(data){
 					if (data.status == true) {
+//						mui.back();
 						mui.openWindow({
 							url:"index.html",
 							id:"index.html"
 						})
-						localStorage.setItem('login','1')
+						var detailPage = null;  
+					    if(!detailPage){  
+					    	detailPage = plus.webview.getWebviewById('home/view/home.html');  
+					    }
+						mui.fire(detailPage,'login',{
+							login:'login',
+						})
 					}else{
 						mui.toast(data.msg)
 					}

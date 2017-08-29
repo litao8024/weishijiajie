@@ -54,16 +54,6 @@
 				})
 			}
 		})
-		if (localStorage.getItem('login') == '1') {
-			mui.back()
-			localStorage.setItem('login','2')
-//			setTimeout(function(){
-//				mui.plusReady(function(){
-//					plus.runtime.restart();
-//				},1000)
-//				localStorage.setItem('login','2')
-//			},1000)
-		}
 		////引导图            
 		mui.plusReady(function() {
 			var launchFlag = plus.storage.getItem("launchFlag");

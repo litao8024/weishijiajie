@@ -8,10 +8,6 @@ document.getElementsByClassName('headImg')[0].style.marginTop = (dpiW/375*210)/2
 mui('.mui-scroll-wrapper').scroll({
     deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006 
 });
-//全局监听事件
-//window.addEventListener('mine',function(e){
-//	alert(e.detail.id);
-//})
 //头像 名称
 HttpRequest('/manage/phone/user',function(data){
 	console.log(JSON.stringify(data));
@@ -108,6 +104,7 @@ mui('.aboutUs')[0].addEventListener('tap',function(){
 })
 //退出登录
 mui('.quit')[0].addEventListener('tap',function(){
+//	mui.back();
 	var quit = "/manage/phonelogin/logout"
 	HttpRequest(quit,function(data){
 		console.log(JSON.stringify(data))

@@ -1,7 +1,15 @@
 mui.init();
 mui('.mui-scroll-wrapper').scroll({
-	deceleration:0.0005
+	scrollY: true, //是否竖向滚动
+	scrollX: false, //是否横向滚动
+	startX: 0, //初始化时滚动至x
+	startY: 0, //初始化时滚动至y
+	indicators: true, //是否显示滚动条
+	deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+	bounce: true //是否启用回弹
 })
+mui('.mui-scroll-wrapper').scroll().scrollTo(0,0,100);//100毫秒滚动到顶
+mui('.mui-scroll-wrapper').scroll().scrollToBottom(100);//100毫秒滚动到底部
 //是否隐藏申请验收
 var Apply = localStorage.getItem('index');
 console.log(Apply)
@@ -405,8 +413,8 @@ mui.plusReady(function(){
 			document.getElementsByClassName('wps')[i].onclick = function(){
 				var path = this.getAttribute('idd')
 				console.log(this.getAttribute('idd'));
-				var downURL='http://192.168.100.242' + path;
-				console.log('http://192.168.100.242' + path);
+				var downURL='http://43.254.3.166:8080' + path;
+				console.log('http://43.254.3.166:8080' + path);
 				mui.plusReady(function(){
 					//开始下载
 					plus.nativeUI.showWaiting("下载文件...");
