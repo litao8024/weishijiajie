@@ -82,9 +82,9 @@ HttpRequest(NewWork,function(data){
 			a.appendChild(div3)
 			cell.setAttribute('index','3')
 		}
-		var div4 = document.createElement('div');
-		div4.setAttribute('style','height: 30px;');
 	}
+	var div4 = document.createElement('div');
+		div4.setAttribute('style','height: 30px;');
 	view.appendChild(div4)
 	mui('.NewList').on('tap','.mui-table-view-cell',function(){
 		console.log(this.getAttribute('id'));

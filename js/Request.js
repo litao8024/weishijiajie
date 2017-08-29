@@ -26,16 +26,6 @@ function HttpRequest (url, callback) {
 			callback(data);
 		},
 		error:function (xhr, type, error) {
-			//respone   statusCode
-			//错误了，直接给用户toast错误信息即可
-			mui.toast(error);
-			console.log(JSON.stringify(xhr))
-			console.log(JSON.stringify(type))
-			console.log(JSON.stringify(error))
-			var type = JSON.stringify(type);
-			if (type = "abort") {
-				mui.toast("您的网络未连接或信号不稳定")
-			}
 		}
 	});
 }
@@ -59,14 +49,6 @@ function ajax(url,data,callback){
 		},
 		success:callback,
 		error:function(xhr,type,error){
-			//异常处理；
-			console.log(JSON.stringify(xhr))
-			console.log(JSON.stringify(type));
-			console.log(JSON.stringify(error));
-			var type = JSON.stringify(type);
-			if (type = "abort") {
-				mui.toast("您的网络未连接或信号不稳定")
-			}
 		}
 	});
 }

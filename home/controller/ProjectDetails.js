@@ -8,8 +8,7 @@ mui('.mui-scroll-wrapper').scroll({
 	deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
 	bounce: true //是否启用回弹
 })
-mui('.mui-scroll-wrapper').scroll().scrollTo(0,0,100);//100毫秒滚动到顶
-mui('.mui-scroll-wrapper').scroll().scrollToBottom(100);//100毫秒滚动到底部
+
 //是否隐藏申请验收
 var Apply = localStorage.getItem('index');
 console.log(Apply)
