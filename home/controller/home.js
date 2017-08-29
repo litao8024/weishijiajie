@@ -3,6 +3,18 @@ mui.init();
 mui('.mui-scroll-wrapper').scroll({
 	deceleration:0.0005
 })
+//判断是否已经登陆
+//var url = "/manage/phonelogin/exist"
+//HttpRequest(url,function(data){
+//	console.log(JSON.stringify(data));
+//	console.log(data.status == false)
+//	if (data.status == false) {
+//		mui.openWindow({
+//			url:"../../login.html",
+//			id:"../../login.html"
+//		})
+//	}
+//})
 //项目详情
 mui('.mui-table-view-cell').on('tap','.project',function(){
 	console.log(this.getAttribute("index"))
@@ -15,13 +27,6 @@ mui('.mui-table-view-cell').on('tap','.project',function(){
 		}
 	})
 })
-//mui('.NewList').on('tap','.ul',function(){
-//	alert('22')
-//	mui.openWindow({
-//		url:"../view/myOrderList.html",
-//		id:"../view/myOrderList.html",
-//	})
-//})
 //新到工单
 var NewWork = "/manage/phone/index"
 HttpRequest(NewWork,function(data){  
@@ -69,6 +74,7 @@ HttpRequest(NewWork,function(data){
 			div3.setAttribute('style','color: #666666;text-align: center;font-size: 1rem;');
 			div3.innerHTML = "实施中"
 			a.appendChild(div3)
+			cell.setAttribute('index','1')
 		} else if(data[i].item_status == 2){
 			img.setAttribute('src','../../img/littleaa.png');
 			a.appendChild(img);
@@ -77,6 +83,7 @@ HttpRequest(NewWork,function(data){
 			div3.setAttribute('style','color: #666666;text-align: center;font-size: 1rem;');
 			div3.innerHTML = "待验收"
 			a.appendChild(div3)
+			cell.setAttribute('index','2')
 		}else{
 			img.setAttribute('src','../../img/littleaaa.png');
 			a.appendChild(img);
@@ -85,18 +92,21 @@ HttpRequest(NewWork,function(data){
 			div3.setAttribute('style','color: #666666;text-align: center;font-size: 1rem;');
 			div3.innerHTML = "已完成"
 			a.appendChild(div3)
+			cell.setAttribute('index','3')
 		}
 		var div4 = document.createElement('div');
 		div4.setAttribute('style','height: 30px;');
+		view.appendChild(div4)
 	}
-	view.appendChild(div4)
 	mui('.NewList').on('tap','.mui-table-view-cell',function(){
 		console.log(this.getAttribute('id'));
+		console.log(this.getAttribute('index'))
+		localStorage.setItem('index',this.getAttribute('index'))
 		mui.openWindow({
 			url:"ProjectDetails.html",
 			id:"ProjectDetails.html",
 			extras:{
-				name:this.getAttribute('id')
+				name:this.getAttribute('id'),
 			}
 		})
 	})

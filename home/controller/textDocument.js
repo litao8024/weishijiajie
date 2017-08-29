@@ -72,7 +72,7 @@ function galleryImg() {
         console.log( "取消选择图片" );  
     }, {filter:"image"});  
 }  
-var url="http://192.168.100.242/public/manage/phone/upload"; 
+var url="http://43.254.3.166:8080/manage/phone/upload"; 
 function uploadImg(e){
 	mui.plusReady(function(){
 		var self = plus.webview.currentWebview();
@@ -86,7 +86,7 @@ function uploadImg(e){
 				console.log("上传成功：\n"+t.responseText)
 				mui.toast('上传成功');
 				wt.close();
-				location.reload()
+				location.reload();
 			}else{
 				console.log(JSON.stringify(status))
 				alert("上传失败："+status)

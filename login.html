@@ -39,12 +39,11 @@
 		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/Request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-//			mui.init({
-//				keyEventBind: {
-//					backbutton: false  //关闭back按键监听
-//				}
-//			});
-			mui.init()
+			mui.init({
+				keyEventBind: {
+					backbutton: false  //关闭back按键监听
+				}
+			});
 			var PhoneWidth = window.screen.width;
 			console.log(PhoneWidth)
 			document.getElementsByClassName("Top")[0].style.height = PhoneWidth * 0.533 + "px";
@@ -62,9 +61,6 @@
 							id:"index.html"
 						})
 						localStorage.setItem('login','1')
-//						mui.plusReady(function(){
-//							plus.runtime.restart()
-//						})
 					}else{
 						mui.toast(data.msg)
 					}

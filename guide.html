@@ -15,7 +15,7 @@
 				width: 100%;
 			}
 			
-			#start {
+			/*#start {
 				position: absolute;
 				bottom: 40px;
 				width: 40%;
@@ -27,7 +27,7 @@
 				border: 1px solid #fff;
 				color: #fff;
 				font-size: 16px;
-			}
+			}*/
 			.mui-slider-indicator .mui-indicator{
 				width: 10px;
 				height: 10px;
@@ -47,26 +47,26 @@
 				<div class="mui-slider-group">
 					<div class="mui-slider-item">
 						<a href="javascript:;">
-							<img class="guide-img" src="img/yuantiao.jpg">
+							<img class="guide-img" src="img/guide1.jpg">
 						</a>
 					</div>
 					<div class="mui-slider-item">
 						<a href="javascript:;">
-							<img class="guide-img" src="img/banner2.png">
+							<img class="guide-img" src="img/guide2.jpg">
 						</a>
 					</div>
 					<div class="mui-slider-item">
 						<a href="javascript:;">
-							<img class="guide-img" src="img/banner1.png">
-							<button class="mui-btn" type="button" id="start"><a href="javascript:;" style="color: white;">开始体验</a></button>
+							<img class="guide-img" src="img/guide3.jpg" id="start">
+							<!--<button class="mui-btn" type="button" id="start"><a href="javascript:;" style="color: white;">开始体验</a></button>-->
 						</a>
 					</div>
 				</div>
-				<div class="mui-slider-indicator">
+				<!--<div class="mui-slider-indicator">
 					<div class="mui-indicator mui-active"></div>
 					<div class="mui-indicator"></div>
 					<div class="mui-indicator"></div>
-				</div>
+				</div>-->
 			</div>
 		</div>
 		<script src="js/mui.min.js"></script>
@@ -106,15 +106,12 @@
 					 */
 					plus.storage.setItem("launchFlag", "true");
 					mui.openWindow({
-						url: "index.html",
-						id: "index",
+						url: "login.html",
+						id: "login",
 						extras: {
 							mark: "gudie" //同样，这里也只是个标识，实际开发中并不用；
 						}
 					});
-					setTimeout(function(){
-						plus.runtime.restart()
-					},1000)
 				});
 			});
 		</script>

@@ -42,26 +42,28 @@
 				backbutton: false  //关闭back按键监听
 			}
 		});
+		//判断是否已经登陆
+		var url = "/manage/phonelogin/exist"
+		HttpRequest(url,function(data){
+			console.log(JSON.stringify(data));
+			console.log(data.status == false)
+			if (data.status == false) {
+				mui.openWindow({
+					url:"login.html",
+					id:"login.html"
+				})
+			}
+		})
 		if (localStorage.getItem('login') == '1') {
-			setTimeout(function(){
-				mui.plusReady(function(){
-					plus.runtime.restart();
-				},1000)
-				localStorage.setItem('login','2')
-			},1000)
+			mui.back()
+			localStorage.setItem('login','2')
+//			setTimeout(function(){
+//				mui.plusReady(function(){
+//					plus.runtime.restart();
+//				},1000)
+//				localStorage.setItem('login','2')
+//			},1000)
 		}
-    	//判断是否已经登陆
-    	var url = "/manage/phonelogin/exist"
-    	HttpRequest(url,function(data){
-    		console.log(JSON.stringify(data));
-    		console.log(data.status == false)
-    		if (data.status == false) {
-    			mui.openWindow({
-    				url:"login.html",
-    				id:"login.html"
-    			})
-    		}
-    	})
 		////引导图            
 		mui.plusReady(function() {
 			var launchFlag = plus.storage.getItem("launchFlag");

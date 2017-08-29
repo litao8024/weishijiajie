@@ -118,11 +118,15 @@
       "css/mui.min.css",
       "img/banner2.png",
       "img/banner1.png",
-      "img/yuantiao.jpg"
+      "img/yuantiao.jpg",
+      "img/guide3.jpg",
+      "img/guide2.jpg",
+      "img/guide1.jpg"
     ],
     "refer": [
       "index.html",
-      "home/view/home.html"
+      "home/view/home.html",
+      "login.html"
     ]
   },
   "login.html": {
@@ -358,7 +362,8 @@
     "resources": [
       "js/mui.min.js",
       "css/mui.min.css"
-    ]
+    ],
+    "refer": []
   },
   "home/view/DailyNo.html": {
     "resources": [
@@ -369,14 +374,16 @@
       "fonts/mui.ttf",
       "css/mui.min.css",
       "js/Request.js"
-    ]
+    ],
+    "refer": []
   },
   "home/view/work.html": {
     "resources": [
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css"
-    ]
+    ],
+    "refer": []
   },
   "home/view/Edit.html": {
     "resources": [
@@ -385,6 +392,7 @@
       "img/login.png",
       "fonts/mui.ttf",
       "css/mui.min.css"
-    ]
+    ],
+    "refer": []
   }
 }

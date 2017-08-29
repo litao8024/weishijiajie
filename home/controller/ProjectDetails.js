@@ -4,6 +4,8 @@ mui('.mui-scroll-wrapper').scroll({
 })
 //是否隐藏申请验收
 var Apply = localStorage.getItem('index');
+console.log(Apply)
+console.log(Apply != '1')
 if (Apply != '1') {
 	document.getElementById('check').style.display = 'none'
 }
