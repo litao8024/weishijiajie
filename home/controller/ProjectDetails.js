@@ -5,19 +5,18 @@ mui('.mui-scroll-wrapper').scroll({
 	startX: 0, //初始化时滚动至x
 	startY: 0, //初始化时滚动至y
 	indicators: true, //是否显示滚动条
-	deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+	deceleration:0.0020, //阻尼系数,系数越小滑动越灵敏
 	bounce: true //是否启用回弹
 })
+//监听应用从后台切换到前台
+document.addEventListener("resume", function () {
+    console.log("应用从后台切换到前台");
+    location.reload();
+}, false);
 
-//是否隐藏申请验收
-var Apply = localStorage.getItem('index');
-console.log(Apply)
-console.log(Apply != '1')
-if (Apply != '1') {
-	document.getElementById('check').style.display = 'none'
-}
 //定位
 function getposition(){
+	plus.nativeUI.showWaiting("正在定位...");
 	mui.plusReady(function(){
 		if(plus.os.name=="Android"){   
 		    var context = plus.android.importClass("android.content.Context"); 
@@ -33,6 +32,7 @@ function getposition(){
 		            mui.toast("Geolocation is not supported by this browser.");
 		        }
 		    }else{ 
+		    	plus.nativeUI.closeWaiting();
 		        alert("请手动开启GPS"); 
 		    } 
 		}else if(plus.os.name=="iOS"){
@@ -52,6 +52,7 @@ function showPosition(position){
 		url:changeUrl,
 		dataType:"json",
 		success: function(data) {
+			plus.nativeUI.closeWaiting();
 	    	console.log(JSON.stringify(data));
 			var changeLatlon = data.result[0].y+','+data.result[0].x;
 			console.log(changeLatlon)
@@ -80,6 +81,13 @@ function showLocation(a){
 						console.log(JSON.stringify(message))
 						ajax("/manage/phone/sign",message,function(data){
 							console.log(JSON.stringify(data))
+							if(data.count == '0'){
+								document.getElementsByClassName('sign')[0].innerHTML = '上班打卡'
+							}else if(data.count == '1'){
+								document.getElementsByClassName('sign')[0].innerHTML = '下班打卡'
+							}else{
+								document.getElementsByClassName('sign')[0].innerHTML = '打卡已满';
+							}
 							mui.toast(data.msg)
 						})
 					})
@@ -101,12 +109,73 @@ function showLocation(a){
 mui.plusReady(function(){
 	var self = plus.webview.currentWebview();
 	console.log(self.name)
+	console.log(self.status)
+	//是否隐藏申请验收
+	var Apply = self.status;
+	console.log(Apply)
+	console.log(Apply != '1')
+	if (Apply != '1'){
+		document.getElementById('check').style.display = 'none';
+		document.getElementsByClassName('sign')[0].style.display = 'none';
+	}
+	//相关日报
+	mui('.dailyy').on('tap','.daily',function(){
+		console.log(this.getAttribute('index'))
+		if (Apply != '1') {
+			mui.toast('该项目不可编辑')
+		} else{
+			mui.openWindow({
+				url:"Daily.html",
+				id:"Daily.html",
+				extras:{
+					name:self.name
+				},
+			})
+		}
+	})
+	//问题报告
+	mui('.HostName').on("tap",".Problem",function(){
+		if (Apply != '1') {
+			mui.toast('该项目不可编辑')
+		} else{
+			mui.openWindow({
+				url:"ProblemReport.html",
+				id:"ProblemReport.html",
+				extras:{
+					name:self.name
+				}
+			})
+		}
+	})
+	//项目文档
+	mui(".ItemWps").on("tap",".WpsProblem",function(){
+		if (Apply != '1') {
+			mui.toast('该项目不可编辑')
+		} else{
+			mui.openWindow({
+				url:"textDocument.html",
+				id:"textDocument.html",
+				extras:{
+					name:self.name
+				}
+			})
+		}
+	})
+	var status1 = self.status;
 	document.getElementById('imgg').setAttribute('index',self.name)
 	var day = document.getElementsByClassName('daily')[0];
 	day.setAttribute('id',self.name)
 	var data = {id:self.name};
 	ajax("/manage/phone/details",data,function(data){
 		console.log(JSON.stringify(data))
+		console.log(data.count)
+		if(data.count == '0'){
+			document.getElementsByClassName('sign')[0].innerHTML = '上班打卡'
+		}else if(data.count == '1'){
+			document.getElementsByClassName('sign')[0].innerHTML = '下班打卡'
+		}else{
+			document.getElementsByClassName('sign')[0].innerHTML = '打卡已满';
+		}
 		document.getElementById('title').innerHTML = data.item.item_name
 		//代理商
 		document.getElementById('agent').innerHTML = data.customer.partner;
@@ -156,9 +225,19 @@ mui.plusReady(function(){
 		//最终客户电话
 		document.getElementById('Final-phone').innerHTML = data.customer.final_phone;
 		document.getElementsByClassName('redact')[2].setAttribute('name','2');
-		//拨打最终客户电话
-		if (data.customer.final_phone != ''){
-			document.getElementById('Final-phone').addEventListener('tap', function() { 
+		var Fphome = 
+		//最终客户邮箱
+		document.getElementById('Final-email').innerHTML = data.customer.final_email;
+		document.getElementsByClassName('redact')[3].setAttribute('name','3');
+		//如果没有信息，进入可编辑页面
+		mui('.mui-table-view').on('tap','.redact',function(){
+			console.log(this.getAttribute('name'));
+			var edit = this.getAttribute('name');
+			console.log(edit)
+			console.log(status1)
+			if(edit=='2' && data.customer.final_phone !=''){
+				//拨打最终客户电话
+				console.log(status1)
 				var btnArray = ['拨打', '编辑'];
 				var Phone = data.customer.final_phone; 
 				mui.confirm('是否拨打 ' + Phone + ' ？', '提示：', btnArray, function(e) { 
@@ -167,7 +246,7 @@ mui.plusReady(function(){
 						mui.plusReady(function(){
 							plus.device.dial(Phone, false); 
 						})
-					}else if(e.index == 1){
+					}else if (e.index==1&&status1 =='1') {
 						mui.plusReady(function(){
 							var self = plus.webview.currentWebview();
 							console.log(self.name)
@@ -175,20 +254,36 @@ mui.plusReady(function(){
 								url:"Edit.html",
 								id:"Edit.html",
 								extras:{
-									edit:'2',
+									edit:edit,
 									name:self.name
 								}
 							})
 						})
+					}else{
+						mui.toast('此项目不可编辑');
 					}
 				}); 
-			});
-		}
-		//最终客户邮箱
-		document.getElementById('Final-email').innerHTML = data.customer.final_email;
-		document.getElementsByClassName('redact')[3].setAttribute('name','3');
+			}else if(status1=='1'){
+				mui.plusReady(function(){
+					var self = plus.webview.currentWebview();
+					console.log(self.name)
+					mui.openWindow({
+						url:"Edit.html",
+						id:"Edit.html",
+						extras:{
+							edit:edit,
+							name:self.name
+						}
+					})
+				})
+			}
+		})
 		//项目备注
-		document.getElementById('contentt').innerHTML = data.item.item_remarks;
+		if(data.item.item_remarks){		
+			document.getElementById('contentt').innerHTML = data.item.item_remarks;
+		}else{
+			document.getElementById('contentt').innerHTML = '没有添加备注';
+		}
 		document.getElementById('place').innerHTML = data.customer.province + data.customer.city + data.customer.address;
 		document.getElementById('cycle').innerHTML = data.dispatch.plan + "天";
 		document.getElementById('engineer').innerHTML = data.dispatch.user_id;
@@ -209,17 +304,17 @@ mui.plusReady(function(){
 			});
 		}
 		document.getElementById('type').innerHTML = data.item.project_line;
-		//相关日报
-		mui('.dailyy').on('tap','.daily',function(){
-			console.log(this.getAttribute('index'))
-			mui.openWindow({
-				url:"Daily.html",
-				id:"Daily.html",
-				extras:{
-					name:self.name
-				},
-			})
-		})
+//		//相关日报
+//		mui('.dailyy').on('tap','.daily',function(){
+//			console.log(this.getAttribute('index'))
+//			mui.openWindow({
+//				url:"Daily.html",
+//				id:"Daily.html",
+//				extras:{
+//					name:self.name
+//				},
+//			})
+//		})
 		if(data.daily != ''){
 			var daily = document.getElementsByClassName('dailyy')[0];
 			var lii = document.createElement('li');
@@ -290,16 +385,16 @@ mui.plusReady(function(){
 				})
 			})
 		}
-		//问题报告
-		mui('.HostName').on("tap",".Problem",function(){
-			mui.openWindow({
-				url:"ProblemReport.html",
-				id:"ProblemReport.html",
-				extras:{
-					name:self.name
-				}
-			})
-		})
+//		//问题报告
+//		mui('.HostName').on("tap",".Problem",function(){
+//			mui.openWindow({
+//				url:"ProblemReport.html",
+//				id:"ProblemReport.html",
+//				extras:{
+//					name:self.name
+//				}
+//			})
+//		})
 		if (data.report != '') {
 			var HostName = document.getElementsByClassName('HostName')[0];
 			console.log(JSON.stringify(data.report))
@@ -322,7 +417,7 @@ mui.plusReady(function(){
 				div3.appendChild(imgg)
 				
 				var divv = document.createElement('div');
-				divv.setAttribute('style','font-weight: 600;display: inline-block');
+				divv.setAttribute('style','display: inline-block;color: rgb(51,51,51);');
 				divv.innerHTML = "填写人：";
 				div3.appendChild(divv);
 			
@@ -373,16 +468,16 @@ mui.plusReady(function(){
 				outdiv2.appendChild(span2);
 			}
 		}
-		//项目文档
-		mui(".ItemWps").on("tap",".WpsProblem",function(){
-			mui.openWindow({
-				url:"textDocument.html",
-				id:"textDocument.html",
-				extras:{
-					name:self.name
-				}
-			})
-		})
+//		//项目文档
+//		mui(".ItemWps").on("tap",".WpsProblem",function(){
+//			mui.openWindow({
+//				url:"textDocument.html",
+//				id:"textDocument.html",
+//				extras:{
+//					name:self.name
+//				}
+//			})
+//		})
 		var ItemWps = document.getElementsByClassName('ItemWps')[0];
 		for (var i=0;i<data.file.length;i++) {
 			var li1 = document.createElement('li');
@@ -412,18 +507,18 @@ mui.plusReady(function(){
 			document.getElementsByClassName('wps')[i].onclick = function(){
 				var path = this.getAttribute('idd')
 				console.log(this.getAttribute('idd'));
-				var downURL='http://43.254.3.166:8080' + path;
-				console.log('http://43.254.3.166:8080' + path);
+				var downURL=hostDomain + path;
+				console.log(hostDomain + path);
 				mui.plusReady(function(){
 					//开始下载
-					plus.nativeUI.showWaiting("下载文件...");
+					plus.nativeUI.showWaiting("正在打开文件...");
 					var dtask = plus.downloader.createDownload(downURL,{}, function(d, status) {
 						if(status == 200) { // 下载成功
 							console.log("下载成功");
 							console.log(JSON.stringify(d))
 							var path = d.filename;
 							console.log(d.filename);
-							mui.toast("下载成功！");
+							mui.toast("打开成功！");
 							setTimeout(function(){
 								plus.runtime.openFile(path, {},function(e){
 									console.log(JSON.stringify(e))
@@ -471,8 +566,113 @@ mui('.HostName').on('tap','a',function(){
 });
 //实时更新日报列表
 window.addEventListener('submit',function(e){
-	window.location.reload();
+	location.reload();
 	console.log(e.detail.submit)
+})
+window.addEventListener('submit1',function(e){
+	var self = plus.webview.currentWebview();
+	console.log(self.name)
+	document.getElementById('imgg').setAttribute('index',self.name)
+	var day = document.getElementsByClassName('daily')[0];
+	day.setAttribute('id',self.name)
+	var data = {id:self.name};
+	ajax("/manage/phone/details",data,function(data){
+		var ItemWps = document.getElementsByClassName('ItemWps')[0];
+		ItemWps.innerHTML = ' ';
+		
+		var li0 = document.createElement('li');
+		li0.setAttribute('class','mui-table-view-cell WpsProblem');
+		var a0 = document.createElement('a');
+		a0.setAttribute('style','color: #72a5f1;font-size: 1.3rem;');
+		li0.appendChild(a0);
+		a0.innerHTML = '项目文档';
+		var span0 = document.createElement('span');
+		span0.setAttribute('class','mui-pull-right');
+		a0.appendChild(span0);
+		var img0 = document.createElement('img');
+		img0.setAttribute('src','../../img/wps.png');
+		span0.appendChild(img0);
+		
+		ItemWps.appendChild(li0);
+		for (var i=0;i<data.file.length;i++) {
+			var li1 = document.createElement('li');
+			li1.setAttribute('class','mui-table-view-cell mui-media wps');
+			li1.setAttribute('idd',data.file[i].path)
+			ItemWps.appendChild(li1);
+			
+			var a1 = document.createElement('a');
+			a1.setAttribute('href','javascript:;');
+			li1.appendChild(a1);
+			
+			var div4 = document.createElement('div');
+			div4.setAttribute('class','mui-media-body');
+			a1.appendChild(div4);
+			
+			var div5 = document.createElement('div');
+			div5.setAttribute('style','font-weight: 600;overflow: hidden;width: 90%;text-overflow: ellipsis;');
+			div5.setAttribute('class','mui-navigate-right');
+			div5.innerHTML = data.file[i].name
+			div4.appendChild(div5);
+			
+			var div6 =document.createElement('div');
+			div6.setAttribute('style','margin-left: 6px;margin-top:5px;');
+			div6.innerHTML = data.file[i].pass_time + ' ' + data.file[i].user_name;
+			div4.appendChild(div6)
+			
+			document.getElementsByClassName('wps')[i].onclick = function(){
+				var path = this.getAttribute('idd')
+				console.log(this.getAttribute('idd'));
+				var downURL=hostDomain + path;
+				console.log(hostDomain + path);
+				mui.plusReady(function(){
+					//开始下载
+					plus.nativeUI.showWaiting("正在打开文件...");
+					var dtask = plus.downloader.createDownload(downURL,{}, function(d, status) {
+						if(status == 200) { // 下载成功
+							console.log("下载成功");
+							console.log(JSON.stringify(d))
+							var path = d.filename;
+							console.log(d.filename);
+							mui.toast("打开成功！");
+							setTimeout(function(){
+								plus.runtime.openFile(path, {},function(e){
+									console.log(JSON.stringify(e))
+								})
+							},1000)
+						} else { //下载失败
+							plus.nativeUI.alert("Download failed: " + status);
+						}
+						plus.nativeUI.closeWaiting();
+					});
+					var i = 0,
+					progress = 0;
+					dtask.addEventListener("statechanged", function(task, status) {
+						switch(task.state) {
+							case 0: //调度开始
+								console.log("调度开始");
+								break;
+							case 1: // 开始
+								console.log("开始");
+								break;
+							case 2: //已连接到服务器
+								console.log("已连接到服务器");
+								break;
+							case 3: // 已接收到数据
+								progress = Math.round(100 * task.downloadedSize / task.totalSize);
+								if(progress == i) {
+									i += 5;
+								}
+								break;
+							case 4: // 下载完成         
+								console.log("完成");
+								break;
+						}
+					});
+					dtask.start();
+				})
+			}
+		}
+	})
 })
 //申请验收
 mui('.content').on('tap','.check',function(){
@@ -485,46 +685,25 @@ mui('.content').on('tap','.check',function(){
 				mui.back();
 				var detailPage = null;  
 			    if(!detailPage){  
-			    	detailPage = plus.webview.getWebviewById('../view/myOrderList.html');  
+			    	detailPage = plus.webview.getWebviewById('pullrefresh_sub.html');  
 			    }
 				mui.fire(detailPage,'apply',{
 					apply:'apply',
+				})
+				//刷先首页
+				var home = null;  
+			    if(!home){  
+			    	home = plus.webview.getWebviewById('home/view/home.html');  
+			    }
+				mui.fire(home,'home',{
+					home:'home',
 				})
 			}
 			mui.toast(data.msg)
 		})
 	})
 })
-//如果没有信息，进入可编辑页面
-mui('.mui-table-view').on('tap','.redact',function(){
-	console.log(this.getAttribute('name'));
-	var edit = this.getAttribute('name');
-	if (edit != 2) {
-		mui.plusReady(function(){
-			var self = plus.webview.currentWebview();
-			console.log(self.name)
-			mui.openWindow({
-				url:"Edit.html",
-				id:"Edit.html",
-				extras:{
-					edit:edit,
-					name:self.name
-				}
-			})
-		})
-	}else if (document.getElementById('Final-phone').innerHTML == '') {
-		mui.plusReady(function(){
-			var self = plus.webview.currentWebview();
-			console.log(self.name)
-			mui.openWindow({
-				url:"Edit.html",
-				id:"Edit.html",
-				extras:{
-					edit:'2',
-					name:self.name
-				}
-			})
-		})
-	}
-})
-
+////模态框关闭按钮
+//function closee(){
+//	mui('#show').popover('hide');
+//}

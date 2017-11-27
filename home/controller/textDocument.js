@@ -72,7 +72,7 @@ function galleryImg() {
         console.log( "取消选择图片" );  
     }, {filter:"image"});  
 }  
-var url="http://43.254.3.166:8080/manage/phone/upload"; 
+var url="http://sdms.ecsits.com/manage/phone/upload"; 
 function uploadImg(e){
 	mui.plusReady(function(){
 		var self = plus.webview.currentWebview();
@@ -86,6 +86,13 @@ function uploadImg(e){
 				console.log("上传成功：\n"+t.responseText)
 				mui.toast('上传成功');
 				wt.close();
+				var detailPage = null;  
+			    if(!detailPage){  
+			    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+			    }
+				mui.fire(detailPage,'submit1',{
+					submit:'submit',
+				})
 				location.reload();
 			}else{
 				console.log(JSON.stringify(status))
@@ -98,7 +105,7 @@ function uploadImg(e){
 		task.start();
 	})
 }
-//压缩图片，这个比较变态的方法，无法return 
+//压缩图片，这个方法，无法return 
 function compressImage(src,dstname){ 
     plus.zip.compressImage({ 
             src: src, 
@@ -114,7 +121,7 @@ function compressImage(src,dstname){
         function(error) { 
             console.log(error); 
             return src; 
-            alert("Compress error!"); 
+            mui.toast("Compress error!"); 
         }); 
 }	
 // 产生一个随机数  
@@ -132,6 +139,7 @@ mui.plusReady(function(){
 			var div = document.createElement('div');
 			div.setAttribute('class','nonework');
 			div.innerHTML="您还没有验收文档";
+			content.style.border = 'none';
 			content.appendChild(div);
 		}else{
 			for (var i=0;i<data.length;i++) {
@@ -194,31 +202,38 @@ mui.plusReady(function(){
 								}
 								mui.toast(data.msg)
 							})
+							var detailPage = null;  
+						    if(!detailPage){  
+						    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+						    }
+							mui.fire(detailPage,'submit1',{
+								submit:'submit',
+							})
 						}
 					})
 				}
 				document.getElementsByClassName('mui-slider-handle')[i].onclick = function(){
 					var path = this.getAttribute('idd')
 					console.log(this.getAttribute('idd'));
-					var downURL='http://192.168.100.242' + path;
-					console.log('http://192.168.100.242' + path);
+					var downURL=hostDomain + path;
+					console.log(hostDomain + path);
 					mui.plusReady(function(){
 						//开始下载
-						plus.nativeUI.showWaiting("下载文件...");
+						plus.nativeUI.showWaiting("正在打开文件...");
 						var dtask = plus.downloader.createDownload(downURL,{}, function(d, status) {
 							if(status == 200) { // 下载成功
 								console.log("下载成功");
 								console.log(JSON.stringify(d))
 								var path = d.filename;
 								console.log(d.filename);
-								mui.toast("下载成功！");
+								mui.toast("打开成功！");
 								setTimeout(function(){
 									plus.runtime.openFile(path, {},function(e){
 										console.log(JSON.stringify(e))
 									})
 								},1000)
 							} else { //下载失败
-								plus.nativeUI.alert("Download failed: " + status);
+								plus.nativeUI.alert("打开失败: " + status);
 							}
 							plus.nativeUI.closeWaiting();
 						});

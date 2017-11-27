@@ -17,7 +17,7 @@
 				<img src="img/logoicon.png"/>
 			</div>
 			<div class="CompanyName">
-				伟仕佳杰服务工单系统
+				工程师的交付管理平台
 			</div>
 			<div class="content">
 				<div class="key mui-input-row">
@@ -54,18 +54,31 @@
 				var password = document.getElementById('password').value;
 				var data = {email:key,pwd:password}
 				ajax(url,data,function(data){
+					console.log(JSON.stringify(data));
 					if (data.status == true) {
-//						mui.back();
-						mui.openWindow({
-							url:"index.html",
-							id:"index.html"
-						})
+						console.log(localStorage.getItem('quit') != '2')
+						if (localStorage.getItem('quit') == '2') {
+							mui.openWindow({
+								url:"index.html",
+								id:"index.html"
+							})
+						}else if(localStorage.getItem('quit') == '0'){
+							localStorage.setItem('quit','2');
+							mui.back();
+						}
 						var detailPage = null;  
 					    if(!detailPage){  
 					    	detailPage = plus.webview.getWebviewById('home/view/home.html');  
 					    }
-						mui.fire(detailPage,'login',{
-							login:'login',
+						mui.fire(detailPage,'home',{
+							home:'home',
+						})
+						var minePagea = null;  
+					    if(!minePagea){  
+					    	minePagea = plus.webview.getWebviewById('mine/view/mine.html');  
+					    }
+						mui.fire(minePagea,'mine',{
+							mine:'mine',
 						})
 					}else{
 						mui.toast(data.msg)

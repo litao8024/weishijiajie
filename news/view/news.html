@@ -9,8 +9,33 @@
         	.mui-table-view-cell:after{
         		background: white !important;
         	}
+        	.mui-table-view:before{
+        		height: 0px;
+        	}
+        	.mui-table-view:after{
+        		height: 0px;
+        	}
         	.mui-table-view li{
         		margin-top: 20px;
+        		background: white;
+        		
+        	}
+        	.Myatention span:first-child{
+        		/*font-weight: 600;*/
+			    width: 90%;
+			    text-overflow: ellipsis;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    display: block;
+			    color: #343434;
+        	}
+        	.Myatention span:last-child{
+			    width: 90%;
+			    text-overflow: ellipsis;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    display: block;
+			    color: #979797;
         	}
         </style>
     </head> 
@@ -20,11 +45,29 @@
 		</header>
         <div class="mui-content mui-scroll-wrapper" id="content"> 
         	<div class="mui-scroll">
-	           	<ul class="mui-table-view">
-					<li class="mui-table-view-cell">
+	           	<ul class="mui-table-view" style="background: #efeff4;">
+					<li class="mui-table-view-cell" index='1'>
 						<a class="mui-navigate-right Myatention">
-							<span style="font-weight: 600;">华为服务新政策</span><br /><br />
-							<span>华为服务新政策内容</span>
+							<span>华为认证HCDP-Cloud Service V1.0正式发布</span><br />
+							<span>自2017年8月26日起，华为认证HCDP-Cloud Service V1.0正式在中国区发布</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" index='2'>
+						<a class="mui-navigate-right Myatention">
+							<span>走进华为培训中心 | 华为全球培训中心（深圳总部）欢迎您</span><br />
+							<span>2017-08-30 华为企业服务</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" index='3'>
+						<a class="mui-navigate-right Myatention">
+							<span>揭榜“生态伙伴精英赛” ｜ 服务精英初赛晋级名单公示，玩转攻略勇闯复赛！</span><br />
+							<span>华为中国合作伙伴大学的年度盛事——“ΣCO-Discovery” 华为生态伙伴精英赛2017伙伴赛初赛于近期隆重举办，4500余名生态伙伴精英在全国32个赛场同步开考。</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" index='4'>
+						<a class="mui-navigate-right Myatention">
+							<span>聚合生态 | 万人规模的“ΣCO-Discovery”华为伙伴精英赛正式揭幕</span><br />
+							<span>2017-08-07 华为企业业务中国合作伙伴</span>
 						</a>
 					</li>
 				</ul>
@@ -42,28 +85,46 @@
 				deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
 				bounce: true, //是否启用回弹 
 			});
-        	document.getElementsByClassName('mui-scroll')[0].style.height = screen.height + "px";
+			console.log(screen.height)
+        	document.getElementsByClassName('mui-scroll')[0].style.minHeight = screen.height -44 - 25 - 51 + "px";
         	mui('.mui-table-view').on('tap','.mui-table-view-cell',function(){
-        		mui.openWindow({
-        			url:"Details.html",
-        			id:"Details.html",
-				    extras:{
-				        name:'litao',
-				    }
-        		})
+	        	if (this.getAttribute('index') == '1'){
+        			mui.openWindow({
+	        			url:"HCIE.html",
+	        			id:"HCIE.html",
+					    extras:{
+					        name:'litao',
+					    }
+	        		})
+	        	} else if (this.getAttribute('index') == '2') {
+	        			mui.openWindow({
+	        			url:"HATC.html",
+	        			id:"HATC.html",
+	        		})
+	        	}else if (this.getAttribute('index') == '3') {
+	        			mui.openWindow({
+	        			url:"Zoology.html",
+	        			id:"Zoology.html",
+	        		})
+	        	}else if (this.getAttribute('index') == '4') {
+	        			mui.openWindow({
+	        			url:"HCNA.html",
+	        			id:"HCNA.html",
+	        		})
+	        	}
         	})
         	mui.plusReady(function(){
 //      		plus.navigator.setStatusBarBackground('#FFFFFF');//状态栏背景白色
-				plus.navigator.setStatusBarStyle("light");//状态栏前景色为黑色
+				plus.navigator.setStatusBarStyle("dark");//状态栏前景色为黑色
 //      		document.getElementById('header').style.height = plus.navigator.getStatusbarHeight() + 44 + "px";
 //      		document.getElementById('title').style.marginTop = plus.navigator.getStatusbarHeight() + "px";
 //      		document.getElementById('content').style.marginTop = plus.navigator.getStatusbarHeight() + "px";
         	})
-        	mui.plusReady(function(){
-				var wv=plus.webview.currentWebview();
-				// 关闭侧滑返回功能
-				wv.setStyle({'popGesture':'none'});
-			});
+//      	mui.plusReady(function(){
+//				var wv=plus.webview.currentWebview();
+//				// 关闭侧滑返回功能
+//				wv.setStyle({'popGesture':'none'});
+//			});
         </script>
     </body> 
 </html> 

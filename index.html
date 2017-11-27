@@ -35,32 +35,35 @@
 </nav>
     <script type="text/javascript" src="js/mui.min.js" ></script>
     <script src="js/Request.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
-    	mui.init({
-			keyEventBind: {
-				backbutton: false  //关闭back按键监听
-			}
-		});
-	
+    mui.init({
+		keyEventBind: {
+			backbutton: false  //关闭back按键监听
+		}
+	});
 	//判断是否已经登陆
 	var url = "/manage/phonelogin/exist"
-		
 		////引导图            
 		mui.plusReady(function() {
 			var launchFlag = plus.storage.getItem("launchFlag");
 			if(launchFlag) {
 				HttpRequest(url,function(data){
-					console.log(JSON.stringify(data));
+					console.log(JSON.stringify(data))
+					console.log(data.version)
+					localStorage.setItem('version',data.version);
+					localStorage.setItem('quit','2');
 					console.log(data.status == false)
 					loginBool = data.status;
-					if (data.status == false) {
+					if (data.status == false){
 						mui.openWindow({
 							url:"login.html",
-							id:"login.html"
+							id:"login.html",
+							show: {  
+						        aniShow: 'slide-in-bottom',
+						    }
 						})
 					}else{
-							loadPage();
+						loadPage();
 					}
 				})
 			}else {
@@ -97,7 +100,6 @@
 		            self.append(sub);
 		        }
 			});
-			
 			//点击切换
 			var home,project,mine,self
 			function getPage(){
@@ -143,5 +145,6 @@
 			wv.setStyle({'popGesture':'none'});
 		});
     </script>
+    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

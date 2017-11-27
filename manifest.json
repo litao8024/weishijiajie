@@ -7,8 +7,8 @@
 	"id": "H5641BFEE",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "佳杰工程师",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.0.0",/*应用版本名称*/
-		"code": "83"
+		"name": "1.1.0",/*应用版本名称*/
+		"code": "84"
 	},
 	"description": "",/*应用描述信息*/
 	"icons": {
@@ -204,29 +204,24 @@
 				"ios": {
 					"iphone": {
 						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/640 960.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/640 1136.png",
-						"retina55": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/1242 2208.png",
-						"retina47": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/750 1334.png",
-						"retina55l": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/2208 1242.png"
+						/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "C:/Users/Administrator/Desktop/项目管理移动端/启动页/640＊1136.png",
+						"retina55": "C:/Users/Administrator/Desktop/项目管理移动端/启动页/1242x2208.png",
+						"retina47": "C:/Users/Administrator/Desktop/项目管理移动端/启动页/750x1334.png"
 					},
 					"ipad": {
-						"portrait": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/768 1004.png", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/1536 2008.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/1024 748.png", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/2048 1496.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/768 1024.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/1536 2048.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/1024 768.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/20481536.png"
+						 /*iPad竖屏启动图片，分辨率：768x1004*/
+						/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						 /*iPad横屏启动图片，分辨率：1024x748*/
+						 /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						 /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						
 					}
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
 					"ldpi": "", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/480 762.png", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/720 1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": "E:/公司项目/伟仕佳杰--备件商城/备件商城/启动页照片/1080 1882.png"
+					"hdpi": "C:/Users/Administrator/Desktop/项目管理移动端/启动页/480x762.png","xhdpi":"C:/Users/Administrator/Desktop/项目管理移动端/启动页/720x1242.png","xxhdpi":"C:/Users/Administrator/Desktop/项目管理移动端/启动页/1080x1882.png"
 				}
 			}
 		}
@@ -308,7 +303,12 @@
 				"refer": [
 					"news/view/Details.html",
 					"news/view/doc.html",
-					"news/view/dd.html"
+					"news/view/dd.html",
+					"news/view/PageTow.html",
+					"news/view/HATC.html",
+					"news/view/Zoology.html",
+					"news/view/HCNA.html",
+					"news/view/HCIE.html"
 				],
 				"priority": 0
 			},
@@ -329,13 +329,15 @@
 					"img/edit-data.png",
 					"mine/view/mine.css",
 					"js/Request.js",
-					"login.html"
+					"login.html",
+					"img/890509333193296716.png"
 				],
 				"refer": [
 					"mine/view/myInfo.html",
 					"mine/view/myOrderList.html",
 					"mine/view/aboutUs.html",
-					"home/view/myOrderList.html"
+					"home/view/myOrderList.html",
+					"home/view/Disclaimer.html"
 				],
 				"priority": 0
 			},
@@ -376,11 +378,10 @@
 					"ChangePassword.html",
 					"fonts/mui.ttf",
 					"img/bg.png",
-					"js/Request.js"
-				],
-				"refer": [
+					"js/Request.js",
 					"index.html"
 				],
+				"refer": [],
 				"priority": 0
 			},
 			"ChangePassword.html": {
@@ -483,7 +484,9 @@
 					"js/Request.js",
 					"home/view/home.css",
 					"img/littleaaa.png",
-					"img/littleaa.png"
+					"img/littleaa.png",
+					"home/view/aaaaa.html",
+					"home/view/pullrefresh_sub.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -506,7 +509,8 @@
 					"img/wps.png",
 					"img/cbd.jpg",
 					"js/Request.js",
-					"js/jquery-1.9.1.min.js"
+					"js/jquery-1.9.1.min.js",
+					"img/107117953668793850.png"
 				],
 				"refer": [
 					"home/view/Daily.html",
@@ -633,6 +637,84 @@
 					"js/Request.js",
 					"js/mui.min.js",
 					"img/login.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"home/view/aaaaa.html": {
+				"resources": [
+					"home/view/myOrderList.html",
+					"home/view/pullrefresh_sub.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"home/view/pullrefresh_sub.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"home/controller/myOrderList.js",
+					"img/littleaa.png",
+					"js/Request.js",
+					"img/littlea.png",
+					"img/littleaaa.png"
+				],
+				"refer": [
+					"home/view/ProjectDetails.html"
+				],
+				"priority": 0
+			},
+			"news/view/PageTow.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"news/view/Zoology.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"news/view/HCNA.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"news/view/HCIE.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"news/view/HATC.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"home/view/Disclaimer.html": {
+				"resources": [
+					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css"
 				],

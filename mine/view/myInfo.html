@@ -22,8 +22,8 @@
 		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: #7b7b7b;"></a>
 		    <h1 class="mui-title">编辑资料</h1>
 	    </header>
-	    <div class="mui-content">
-			<div class="mui-scroll">
+	    <div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll" style="background: #efeff4;">
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>姓名</span>
@@ -54,7 +54,7 @@
 						<div style="float: right;" id="area"></div>
 					</div>
 				</div>
-				<div class="mui-table-view-cell edit">
+				<!--<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right">
 						<span>技能</span>
 						<div style="float: right;" id="skill">存储</div>
@@ -65,7 +65,7 @@
 						<span>证书</span>
 						<div style="float: right;" id="diploma">HCIE</div>
 					</div>
-				</div>
+				</div>-->
 				<div class="mui-table-view-cell edit">
 					<div class="mui-navigate-right password">
 						<span>修改密码</span>
@@ -76,7 +76,12 @@
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+			//仿IOS滑动效果
+			mui('.mui-scroll-wrapper').scroll({
+			    deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006 
+			});
+			document.getElementsByClassName('mui-scroll')[0].style.minHeight = screen.height - 105 + 'px';
 			mui('.edit').on('tap','.password',function(){
 				mui.openWindow({
 					url:"../../ChangePassword.html",

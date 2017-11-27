@@ -90,9 +90,6 @@ body{
 	color: #333333;
 	font-size:1.1rem;
 }
-.servers:after{
-	display: none;
-}
 .password:after{
 	font-family: Muiicons;
     font-size: inherit;

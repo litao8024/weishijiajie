@@ -11,7 +11,7 @@
 	line-height: 30px;
 	font-family: 900;
 	font-size: 1.2rem;
-	margin-left: 4%;
+	margin-left: 4%
 }
 .ProjectName{
 	display: inline-block;
@@ -47,7 +47,7 @@
 }
 .WorkPlan{
 	height: 40px;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	line-height: 40px;
 	color: #333333;
 	border-bottom: 1px solid #D7D7D7;
@@ -56,31 +56,39 @@
 }
 #WorkPlan{
 	height: 150px;
+	line-height: 19px;
+	font-size: 15px;
 	border: none;
 }
 #WorkContent{
 	height: 150px;
 	border: none;
+	line-height: 19px;
+	font-size: 15px;
 }
 #WorkProblem{
 	height: 150px;
 	border: none;
+	line-height: 19px;
+	font-size: 15px;
 }
 #AllPlan{
 	height: 50px;
 	border: none;
 	line-height: 30px;
+	line-height: 19px;
+	font-size: 15px;
 }
 .submit{
-	height: 40px;
+	height: 44px;
 	width: 80%;
 	margin-left: 10%;
 	text-align: center;
-	line-height: 40px;
+	line-height: 44px;
 	margin-top: 20px;
 	color: #FFFFFF;
 	background: url(../../img/login.png) no-repeat;
-	background-size: 100%;
+	background-size: 100% 100%;
 	margin-bottom: 20px;
 }
 .ListUl{
@@ -101,10 +109,10 @@
 	text-indent: 15px;
 	border-bottom: 1px solid #D7D7D7;
 }
-.mui-bar-nav{
+/*.mui-bar-nav{
 	box-shadow: none;
 	border: 1px solid #B7B7B7;
-}
+}*/
 .mui-table-view:after{
 	height: 0px !important;
 }

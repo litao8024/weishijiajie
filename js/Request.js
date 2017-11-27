@@ -1,5 +1,6 @@
 //定义服务器地址
-var hostDomain = "http://43.254.3.166:8080";
+//var hostDomain = "http://43.254.3.166:8080";
+var hostDomain = "http://sdms.ecsits.com";
 //网络请求方法
 //url		请求的子路经和参数（News?item=最新&pageIndex=1）
 //callback	回调函数
@@ -9,7 +10,7 @@ function HttpRequest (url, callback) {
 	mui.ajax(hURL,{
 		dataType:'json',
 		type:'get',
-		timeout:2000,
+		timeout:10000,
 		beforeSend: function() {
 			mui.plusReady(function(){
 				plus.nativeUI.showWaiting();
@@ -26,6 +27,12 @@ function HttpRequest (url, callback) {
 			callback(data);
 		},
 		error:function (xhr, type, error) {
+			console.log(JSON.stringify(xhr))
+			console.log(JSON.stringify(type))
+			console.log(JSON.stringify(error))
+			if(JSON.stringify(type) == 'abort'){
+				mui.toast('您的网络未连接或信号不好！')
+			}
 		}
 	});
 }
@@ -36,7 +43,7 @@ function ajax(url,data,callback){
 		data:data,
 		dataType:'json',//服务器返回json格式数据
 		type:'post',//HTTP请求类型
-		timeout:2000,//超时时间设置为10秒；
+		timeout:10000,//超时时间设置为10秒；
 		beforeSend: function() {
 			mui.plusReady(function(){
 				plus.nativeUI.showWaiting();
@@ -49,6 +56,12 @@ function ajax(url,data,callback){
 		},
 		success:callback,
 		error:function(xhr,type,error){
+			console.log(JSON.stringify(xhr))
+			console.log(JSON.stringify(type))
+			console.log(JSON.stringify(error))
+			if(JSON.stringify(type) == 'abort'){
+				mui.toast('您的网络未连接或信号不好！')
+			}
 		}
 	});
 }

@@ -75,7 +75,12 @@
     "refer": [
       "news/view/Details.html",
       "news/view/doc.html",
-      "news/view/dd.html"
+      "news/view/dd.html",
+      "news/view/PageTow.html",
+      "news/view/HATC.html",
+      "news/view/Zoology.html",
+      "news/view/HCNA.html",
+      "news/view/HCIE.html"
     ]
   },
   "mine/view/mine.html": {
@@ -95,14 +100,16 @@
       "img/edit-data.png",
       "mine/view/mine.css",
       "js/Request.js",
-      "login.html"
+      "login.html",
+      "img/890509333193296716.png"
     ],
     "refer": [
       "mine/view/myInfo.html",
       "mine/view/myOrderList.html",
       "mine/view/aboutUs.html",
       "home/view/myOrderList.html",
-      "login.html"
+      "login.html",
+      "home/view/Disclaimer.html"
     ]
   },
   "guide.html": {
@@ -142,7 +149,8 @@
       "ChangePassword.html",
       "fonts/mui.ttf",
       "img/bg.png",
-      "js/Request.js"
+      "js/Request.js",
+      "index.html"
     ],
     "refer": [
       "ChangePassword.html",
@@ -248,10 +256,14 @@
       "js/Request.js",
       "home/view/home.css",
       "img/littleaaa.png",
-      "img/littleaa.png"
+      "img/littleaa.png",
+      "home/view/aaaaa.html",
+      "home/view/pullrefresh_sub.html"
     ],
     "refer": [
-      "home/view/ProjectDetails.html"
+      "home/view/ProjectDetails.html",
+      "home/view/aaaaa.html",
+      "home/view/pullrefresh_sub.html"
     ]
   },
   "home/view/ProjectDetails.html": {
@@ -272,7 +284,8 @@
       "img/wps.png",
       "img/cbd.jpg",
       "js/Request.js",
-      "js/jquery-1.9.1.min.js"
+      "js/jquery-1.9.1.min.js",
+      "img/107117953668793850.png"
     ],
     "refer": [
       "home/view/Daily.html",
@@ -394,5 +407,72 @@
       "css/mui.min.css"
     ],
     "refer": []
+  },
+  "home/view/aaaaa.html": {
+    "resources": [
+      "home/view/myOrderList.html",
+      "home/view/pullrefresh_sub.html"
+    ],
+    "refer": [
+      "home/view/myOrderList.html",
+      "home/view/pullrefresh_sub.html"
+    ]
+  },
+  "home/view/pullrefresh_sub.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "home/controller/myOrderList.js",
+      "img/littleaa.png",
+      "js/Request.js",
+      "img/littlea.png",
+      "img/littleaaa.png"
+    ],
+    "refer": [
+      "home/view/ProjectDetails.html"
+    ]
+  },
+  "news/view/PageTow.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "news/view/Zoology.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "news/view/HCNA.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "news/view/HCIE.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "news/view/HATC.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "home/view/Disclaimer.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
   }
 }

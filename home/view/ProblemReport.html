@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="home.css"/>
 	</head>
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<header class="mui-bar mui-bar-nav" style="background: white;">
 		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: #7c7c7d;"></a>
 			<h1 class="mui-title">问题报告</h1>
 		</header>
@@ -35,6 +35,7 @@
 		<script src="../../js/Request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init()
+			var type = 0;
 			mui(".mui-collapse-content").on("tap",".question",function(){
 				document.getElementsByClassName('mui-navigate-right')[0].innerHTML = this.innerHTML;
 				document.getElementById('li').setAttribute('class',"mui-table-view-cell mui-collapse")
@@ -54,21 +55,27 @@
 			})
 			mui('.mui-content').on('tap','.submit',function(){
 				var content = document.getElementById('WorkPlan').value;
-				var data = {type:type,problem:content,item_id:item_id};
-				ajax("/manage/phone/report_add",data,function(data){
-					console.log(JSON.stringify(data))
-					if (data.status == true) {
-//						mui.back();
-						var detailPage = null;  
-					    if(!detailPage){  
-					    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
-					    }
-						mui.fire(detailPage,'submit',{
-							submit:'submit',
-						})
-					}
-					mui.toast(data.msg)
-				})
+				if (content == '') {
+					mui.toast('您还没有填写信息，提交失败！')
+				} else{
+					var data = {type:type,problem:content,item_id:item_id};
+					ajax("/manage/phone/report_add",data,function(data){
+						console.log(JSON.stringify(data))
+						if (data.status == true) {
+							mui.back();
+							var detailPage = null;  
+						    if(!detailPage){  
+						    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+						    }
+							mui.fire(detailPage,'submit',{
+								submit:'submit',
+							})
+							//清空问题报告内容
+//							document.getElementById('WorkPlan').value = ' '
+						}
+						mui.toast(data.msg)
+					})
+				}
 			})
 		</script>
 	</body>

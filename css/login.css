@@ -55,15 +55,15 @@ body{
 	padding: 10px !important;
 }
 .login{
-	height: 4rem;
+	height: 44px;
 	width: 80%;
 	margin-left: 10%;
 	text-align: center;
-	line-height: 40px;
+	line-height: 44px;
 	margin-top: 20px;
 	color: #FFFFFF;
 	background: url(../img/login.png) no-repeat;
-	background-size: 100%;
+	background-size: 100% 100%;
 }
 .bottom{
 	width: 80%;

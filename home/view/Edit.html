@@ -8,12 +8,12 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<style type="text/css">
 			.edit{
-				height: 47px;
+				height: 60px;
 				width: 80%;
 				margin-left: 10%;
 				text-align: center;
 				line-height: 40px;
-				margin-top: 20px;
+				margin-top: 50px;
 				color: #FFFFFF;
 				background: url(../../img/login.png) no-repeat;
 				background-size: 100%;
@@ -57,6 +57,7 @@
 									submit:'submit',
 								})
 							}
+							mui.toast(data.msg)
 						})
 					}else if(edit == 1){
 						data = {final_contacts:value,item_id:self.name};
@@ -73,25 +74,29 @@
 									submit:'submit',
 								})
 							}
+							mui.toast(data.msg)
 						})
 					}else if(edit == 2){
-						data = {final_phone:value,item_id:self.name};
-						console.log(JSON.stringify(data))
-						ajax("/manage/phone/edit",data,function(data){
-							console.log(JSON.stringify(data));
-							if (data.status == true) {
-								var detailPage = null;  
-							    if(!detailPage){  
-							    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
-							    }
-								mui.fire(detailPage,'submit',{
-									submit:'submit',
-								})
-								setTimeout(function(){
-									mui.back();
-								},1000)
-							}
-						})
+						if(!(/^1[34578]\d{9}$/.test(value))){ 
+					        mui.toast("手机号码有误，请重填");  
+					        return false; 
+					    } else{
+					    	data = {final_phone:value,item_id:self.name};
+					    	console.log(JSON.stringify(data))
+					    	ajax("/manage/phone/edit",data,function(data){
+					    		console.log(JSON.stringify(data));
+					    		if (data.status == true) {
+					    			var detailPage = null;  
+					    		    if(!detailPage){  
+					    		    	detailPage = plus.webview.getWebviewById('ProjectDetails.html');  
+					    		    }
+					    			mui.fire(detailPage,'submit',{
+					    				submit:'submit',
+					    			})
+					    		}
+					    		mui.toast(data.msg)
+					    	})
+					    }
 					}else if(edit == 3){
 						data = {final_email:value,item_id:self.name};
 						console.log(JSON.stringify(data))
@@ -107,6 +112,7 @@
 									submit:'submit',
 								})
 							}
+							mui.toast(data.msg)
 						})
 					}
 				})
